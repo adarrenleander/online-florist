@@ -49,7 +49,7 @@ footer p {
     margin: 0;
 }
 
-footer p span {
+footer p > span {
     color: #ee3322;
     font-weight: bold;
 }

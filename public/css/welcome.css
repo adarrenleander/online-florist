@@ -1,0 +1,28 @@
+.content-container {
+    height: 93vh;
+    text-align: center;
+}
+
+.content-body {
+    padding: 35vh 0;
+}
+
+.content-body h1 {
+    font-size: 55px;
+    margin: 0;
+}
+
+.content-body h1 > span {
+    font-size: 90px;
+    color: #ee3322;
+    transition: 0.2s;
+}
+
+.content-body h1 > span:hover {
+    font-size: 100px;
+}
+
+.content-bodys h3 {
+    margin: 0;
+    font-size: 20px;
+}
