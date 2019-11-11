@@ -2,7 +2,7 @@
 <title>Login - Online Florist</title>
 
 @section('content')
-<div id="login">
+<div class="log-reg" id="login">
     <div class="content-container">
         <div class="content">
             <h2>Login</h2>

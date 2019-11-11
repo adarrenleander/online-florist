@@ -146,28 +146,35 @@ footer h6 i {
 }
 /********** **********/
 
-/********** LOGIN **********/
-#login .content-container {
-    height: 93vh;
+/********** LOGIN and REGISTER **********/
+.log-reg .content-container {
     text-align: center;
     background-color: #ffffff;
 }
 
 #login .content {
+    padding: 50px 0 150px 0;
+}
+
+#register .content {
     padding: 50px 0;
 }
 
-#login .content h2 {
+.log-reg .content h2 {
     font-size: 50px;
     color: #ee3322;
     letter-spacing: 1px;
 }
 
-#login .content form {
+.log-reg .content form {
     border-top: 1px solid #ee3322;
     border-bottom: 1px solid #ee3322;
     width: 60%;
     margin: 30px auto;
     padding: 20px 0;
+}
+
+.log-reg textarea {
+    height: 200px;
 }
 /********** **********/
