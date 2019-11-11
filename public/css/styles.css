@@ -1,0 +1,170 @@
+/********** MASTER **********/
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+/* 
+header {
+    background-color: #ee3322;
+    height: 7vh;
+}
+
+header .header-container {
+    padding: 2vh 10%;
+}
+
+header .header-left {
+    float: left;
+}
+
+header .header-right {
+    float: right;
+}
+
+header a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 18px;
+}
+
+header .header-right a {
+    padding: 2vh 20px;
+    transition: 0.3s;
+}
+
+header .header-right a:hover {
+    background-color: #d03027;
+} */
+
+footer {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 30px 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer p > span {
+    color: #ee3322;
+    font-weight: bold;
+}
+/********** **********/
+
+/********** WELCOME **********/
+#welcome .content-container {
+    height: 93vh;
+    text-align: center;
+}
+
+#welcome .content {
+    padding: 35vh 0;
+}
+
+#welcome .content h1 {
+    font-size: 55px;
+    margin: 0;
+}
+
+#welcome .content h1 > span {
+    font-size: 90px;
+    color: #ee3322;
+    transition: 0.2s;
+}
+
+#welcome .content h1 > span:hover {
+    font-size: 100px;
+}
+
+#welcome .content h3 {
+    margin: 0;
+    margin-top: 15px;
+    font-size: 20px;
+}
+/********** **********/
+
+/********** LOGIN **********/
+/* .content-container {
+    height: 93vh;
+    text-align: center;
+}
+
+.content {
+    padding: 30px 0;
+}
+
+.content h2 {
+    font-size: 50px;
+    color: #ee3322;
+    letter-spacing: 1px;
+}
+
+.content form {
+    border: 2px solid #c9c9c9;
+    width: 60%;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.content form label {
+    display: inline-block;
+    font-size: 16px;
+    text-align: right;
+}
+
+.content form input[type=text], .content form input[type=password] {
+    display: inline-block;
+    margin: 20px 0;
+    width: 250px;
+    font-size: 16px;
+    outline: none;
+    padding: 5px;
+    transition: 0.3s;
+    border: none;
+    border-bottom: 3px solid #c9c9c9;
+    text-align: center;
+}
+
+.content form input[type=text]:focus, .content form input[type=password]:focus {
+    width: 400px;
+}
+
+.content form input[type=checkbox] {
+    margin: 15px 10px 5px 10px;
+}
+
+.content form input[type=submit] {
+    margin: 5px 0;
+    background-color: #ee3322;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: 0.3s;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 5px;
+}
+
+.content form input[type=submit]:hover {
+    background-color: #d03027;
+}
+
+.content form a {
+    text-decoration: none;
+    color: #00a6d6;
+}
+
+.content form a:visited {
+    color: #00a6d6;
+} */
+/********** **********/
