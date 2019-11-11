@@ -9,6 +9,7 @@ body {
     height: 100%;
 }
 
+/***** OVERWRITING BOOTSTRAP *****/
 .bg-red {
     background-color: #ee3322;
 }
@@ -48,6 +49,7 @@ body {
     color: #ffffff;
     background-color: #d03027;
 }
+/***** *****/
 
 footer {
     background-color: #f0f0f0;
@@ -55,13 +57,18 @@ footer {
     padding: 30px 0;
 }
 
-footer p {
+footer h6 {
     margin: 0;
+    font-size: 15px;
 }
 
-footer p > span {
+footer h6 span {
     color: #ee3322;
     font-weight: bold;
+}
+
+footer h6 i {
+    color: #d4af37;
 }
 /********** **********/
 
@@ -69,6 +76,10 @@ footer p > span {
 #welcome .content-container {
     height: 93vh;
     text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(../storage/bouquet-assorted-color-flowers.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 #welcome .content {
@@ -78,22 +89,25 @@ footer p > span {
 #welcome .content h1 {
     font-size: 55px;
     margin: 0;
+    color: #ffffff;
+    cursor: pointer;
 }
 
 #welcome .content h1 > span {
     font-size: 90px;
-    color: #ee3322;
     transition: 0.2s;
 }
 
 #welcome .content h1 > span:hover {
     font-size: 100px;
+    background-color: #ee3322;
 }
 
 #welcome .content h3 {
     margin: 0;
     margin-top: 15px;
     font-size: 20px;
+    color: #ffffff;
 }
 /********** **********/
 
