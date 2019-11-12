@@ -48,11 +48,18 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        $rules = [
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|alpha_dash|min:5|confirmed',
+            'password_confirmation' => 'required',
+            'phone' => 'required|regex:/^[0-9]+$/i|min:8|max:12',
+            'gender' => 'required|in:male,female',
+            'address' => 'required|min:10',
+            // 'profile_picture' => 'required'/*'|mimes:jpeg,png,jpg'*/
+        ];
+
+        return Validator::make($data, $rules);
     }
 
     /**
@@ -63,10 +70,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // $image = $data->file('image');
+        // $imageName = 'storage/img/'.$data->name.'.'.$image->GetClientOriginalExtension();
+
+        // Storage::putFileAs('public/img', $image, $imageName);
+
+        // dd($data);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'phone' => $data['phone'],
+            'gender' => $data['gender'],
+            'address' => $data['address'],
+            'profile_picture' => 'image',
+            'role' => 'member'
         ]);
     }
 }
