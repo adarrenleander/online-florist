@@ -3,9 +3,9 @@
 
 @section('content')
 <div class="log-reg" id="register">
-    <div class="content-container">
-        <div class="content">
-            <h2>Register</h2>
+    <div class="content">
+        <h2>Register</h2>
+        <div class="content-container">
             <form action="{{ route('register') }}" method="post">
                 @csrf
                 <div class="form-group row">
@@ -106,8 +106,8 @@
                     </div>
                 </div>
                 
-                <div class="form-group row mb-0">
-                    <div class="col-md-6 offset-md-4">
+                <div class="form-group row mb-3">
+                    <div class="col-md-8 offset-md-2">
                         <button type="submit" class="btn btn-primary">
                             {{ __('Register') }}
                         </button>

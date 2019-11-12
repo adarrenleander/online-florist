@@ -105,6 +105,20 @@ footer h6 span {
 footer h6 i {
     color: #d4af37;
 }
+
+.content-container {
+    border-top: 1px solid #ee3322;
+    border-bottom: 1px solid #ee3322;
+    width: 60%;
+    margin: 30px auto;
+    padding: 20px 0;
+}
+
+.content h2 {
+    font-size: 50px;
+    color: #ee3322;
+    letter-spacing: 1px;
+}
 /********** **********/
 
 /********** WELCOME **********/
@@ -147,7 +161,7 @@ footer h6 i {
 /********** **********/
 
 /********** LOGIN and REGISTER **********/
-.log-reg .content-container {
+.log-reg {
     text-align: center;
     background-color: #ffffff;
 }
@@ -158,20 +172,6 @@ footer h6 i {
 
 #register .content {
     padding: 50px 0;
-}
-
-.log-reg .content h2 {
-    font-size: 50px;
-    color: #ee3322;
-    letter-spacing: 1px;
-}
-
-.log-reg .content form {
-    border-top: 1px solid #ee3322;
-    border-bottom: 1px solid #ee3322;
-    width: 60%;
-    margin: 30px auto;
-    padding: 20px 0;
 }
 
 .log-reg textarea {
