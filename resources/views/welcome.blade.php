@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<title>Welcome to Online Florist</title>
+@section('title', 'Welcome to Online Florist')
 
 @section('content')
 <div id="welcome">

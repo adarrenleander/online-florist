@@ -1,12 +1,12 @@
 @extends('layouts.app')
-<title>Register - Online Florist</title>
+@section('title', 'Register - Online Florist')
 
 @section('content')
 <div class="log-reg" id="register">
     <div class="content-container">
         <div class="content">
             <h2>Register</h2>
-            <form action="{{ route('login') }}" method="post">
+            <form action="{{ route('register') }}" method="post">
                 @csrf
                 <div class="form-group row">
                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>

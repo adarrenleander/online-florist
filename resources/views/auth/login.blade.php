@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<title>Login - Online Florist</title>
+@section('title', 'Login - Online Florist')
 
 @section('content')
 <div class="log-reg" id="login">
