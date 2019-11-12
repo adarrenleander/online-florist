@@ -23,8 +23,8 @@ class CreateTransactionsTable extends Migration
             $table->timestamps();
 
             $table->foreign('member_id')->references('id')->on('Users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('courier_id')->references('id')->on('Couriers')->onDelete('cacade')->onUpdate('cascade');
-            $table->foreign('flower_id')->referecnes('id')->on('Flowers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('courier_id')->references('id')->on('Couriers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('flower_id')->references('id')->on('Flowers')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
