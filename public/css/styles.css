@@ -177,4 +177,8 @@ footer h6 i {
 .log-reg textarea {
     height: 200px;
 }
+
+.log-reg input[type="radio"] {
+    margin-right: 7px;
+}
 /********** **********/

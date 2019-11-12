@@ -53,10 +53,10 @@ class RegisterController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|alpha_dash|min:5|confirmed',
             'password_confirmation' => 'required',
-            'phone_number' => 'required|regex:/^[0-9]+$/i|min:8|max:12',
-            // 'gender' => '',
+            'phone' => 'required|regex:/^[0-9]+$/i|min:8|max:12',
+            'gender' => 'required|in:male,female',
             'address' => 'required|min:10',
-            // 'image' => 'required|mimes:jpeg,png,jpg'
+            // 'profile_picture' => 'required'/*'|mimes:jpeg,png,jpg'*/
         ];
 
         return Validator::make($data, $rules);
@@ -75,14 +75,17 @@ class RegisterController extends Controller
 
         // Storage::putFileAs('public/img', $image, $imageName);
 
+        // dd($data);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'phone' => $data['phone_number'],
-            // 'gender' => $data['gender'],
+            'phone' => $data['phone'],
+            'gender' => $data['gender'],
             'address' => $data['address'],
-            // 'profile_picture' => $imageName
+            'profile_picture' => 'image',
+            'role' => 'member'
         ]);
     }
 }

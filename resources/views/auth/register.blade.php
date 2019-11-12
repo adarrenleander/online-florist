@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<title>Register - Online Florist</title>
+@section('title', 'Register - Online Florist')
 
 @section('content')
 <div class="log-reg" id="register">
@@ -35,8 +35,8 @@
                 <div class="form-group row">
                     <label for="phone-number" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
                     <div class="col-md-6">
-                        <input id="phone-number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" autocomplete="tel-national">
-                        @error('phone_number')
+                        <input id="phone-number" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" autocomplete="tel-national">
+                        @error('phone')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -44,19 +44,18 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="form-group row mb-0">
                     <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
-                    <div class="checkbox-container">
-                        <label><input id="gender" type="radio" class="checkbox @error('gender') is-invalid @enderror" name="gender">Male</label>
+                    <div class="col-md-6 col-form-label text-md-left">
+                        <label><input id="gender" type="radio" class="checkbox @error('gender') is-invalid @enderror" name="gender" value="male" {{ old('gender') == 'male' ? 'checked' : '' }}>Male</label>
+                        <br>
+                        <label><input id="gender" type="radio" class="checkbox @error('gender') is-invalid @enderror" name="gender" value="female" {{ old('gender') == 'female' ? 'checked' : '' }}>Female</label>
+                        @error('gender')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-                    <div class="checkbox-container">
-                        <label><input id="gender" type="radio" class="checkbox @error('gender') is-invalid @enderror" name="gender">Female</label>
-                    </div>
-                    @error('gender')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
                 </div>
 
                 <div class="form-group row">
@@ -74,7 +73,7 @@
                 <div class="form-group row">
                     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
                     <div class="col-md-6">
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" autocomplete="off">
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" autocomplete="new-password">
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -86,7 +85,7 @@
                 <div class="form-group row">
                     <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
                     <div class="col-md-6">
-                        <input id="password-confirm" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation"  value="{{ old('password_confirmation') }}" autocomplete="off">
+                        <input id="password-confirm" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation"  value="{{ old('password_confirmation') }}" autocomplete="new-password">
                         @error('password_confirmation')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
