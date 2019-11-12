@@ -10,7 +10,38 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
+            @guest
+            @else
+                <li>
+                    <a class="nav-link" href="{{ route('home') }}">{{ __('Catalog') }}</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Profile') }}</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        Admin Menu<span class="caret"></span>
+                    </a>
 
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('login') }}">
+                            {{ __('Manage Flowers') }}
+                        </a>
+                        <a class="dropdown-item" href="{{ route('login') }}">
+                            {{ __('Manage Flower Types') }}
+                        </a>
+                        <a class="dropdown-item" href="{{ route('login') }}">
+                            {{ __('Manage Couriers') }}
+                        </a>
+                        <a class="dropdown-item" href="{{ route('login') }}">
+                            {{ __('Manage Users') }}
+                        </a>
+                        <a class="dropdown-item" href="{{ route('login') }}">
+                            {{ __('Transaction History') }}
+                        </a>
+                    </div>
+                </li>
+            @endguest
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -26,6 +57,9 @@
                         </li>
                     @endif
                 @else
+                    <li>
+                        <a class="nav-link">{{ __('DateTime') }}</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
