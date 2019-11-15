@@ -9,7 +9,7 @@
             @csrf
             <div class="form-group row">
                 <div class="col-md-6 offset-md-3">
-                    <input type="text" class="form-control" name="search" autofocus>
+                    <input type="text" class="form-control" name="search">
                     <button type="submit" class="btn btn-primary">
                         {{ __('Search') }}
                     </button>
