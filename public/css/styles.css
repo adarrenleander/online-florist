@@ -98,6 +98,12 @@ footer h6 i {
     color: #d4af37;
 }
 
+.content {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 50px 0;
+}
+
 .content-container {
     border-top: 1px solid #ee3322;
     border-bottom: 1px solid #ee3322;
@@ -117,34 +123,34 @@ footer h6 i {
 #welcome .welcome-container {
     height: 93vh;
     text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(../storage/bouquet-assorted-color-flowers.jpg);
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(../storage/images/bouquet-assorted-color-flowers.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
 
-#welcome .content {
+#welcome .welcome-content {
     padding: 35vh 0;
 }
 
-#welcome .content h1 {
+#welcome .welcome-content h1 {
     font-size: 55px;
     margin: 0;
     color: #ffffff;
     cursor: pointer;
 }
 
-#welcome .content h1 > span {
+#welcome .welcome-content h1 > span {
     font-size: 90px;
     transition: 0.2s;
 }
 
-#welcome .content h1 > span:hover {
+#welcome .welcome-content h1 > span:hover {
     font-size: 100px;
     background-color: #ee3322;
 }
 
-#welcome .content h3 {
+#welcome .welcome-content h3 {
     margin: 0;
     margin-top: 15px;
     font-size: 20px;
@@ -153,17 +159,8 @@ footer h6 i {
 /********** **********/
 
 /********** LOGIN and REGISTER **********/
-.log-reg {
-    text-align: center;
-    background-color: #ffffff;
-}
-
-#login .content {
+#login {
     padding: 50px 0 150px 0;
-}
-
-#register .content {
-    padding: 50px 0;
 }
 
 .log-reg textarea {

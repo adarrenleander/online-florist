@@ -2,23 +2,29 @@
 @section('title', 'Catalog - Online Florist')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+<div class="content">
+    <h2>Catalog</h2>
+    <div class="content-container">
+        <form method="post" action="{{ url('home') }}">
+            @csrf
+            <div class="form-group row">
+                <div class="col-md-6 offset-md-3">
+                    <input type="text" class="form-control" name="search" autofocus>
+                    <button type="submit" class="btn btn-primary">
+                        {{ __('Search') }}
+                    </button>
                 </div>
             </div>
-        </div>
+        </form>
+        <table>
+            @foreach($flowers as $flower)
+                <tr>
+                    <td>{{ $flower->name }}</td>
+                    <td><img src="{{ $flower->image }}"></td>
+                </tr>
+            @endforeach
+        </table>
+        <div>{{ $flowers->links() }}</div>
     </div>
 </div>
 @endsection

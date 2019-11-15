@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFlowertypesTable extends Migration
+class CreateFlowerTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateFlowertypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('flowertypes', function (Blueprint $table) {
+        Schema::create('flower_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type_name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateFlowertypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('flowertypes');
+        Schema::dropIfExists('flower_types');
     }
 }

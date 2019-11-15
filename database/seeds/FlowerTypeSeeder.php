@@ -1,5 +1,6 @@
 <?php
 
+use App\FlowerType;
 use Illuminate\Database\Seeder;
 
 class FlowerTypeSeeder extends Seeder
@@ -11,6 +12,28 @@ class FlowerTypeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        FlowerType::create([
+            'type_name' => 'Rose'
+        ]);
+
+        FlowerType::create([
+            'type_name' => 'Lily'
+        ]);
+
+        FlowerType::create([
+            'type_name' => 'Sunflower'
+        ]);
+
+        FlowerType::create([
+            'type_name' => 'Gerbera'
+        ]);
+
+        FlowerType::create([
+            'type_name' => 'Daisy'
+        ]);
+
+        FlowerType::create([
+            'type_name' => 'Tulip'
+        ]);
     }
 }

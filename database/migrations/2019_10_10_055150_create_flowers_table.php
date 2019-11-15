@@ -23,7 +23,7 @@ class CreateFlowersTable extends Migration
             $table->string('image');
             $table->timestamps();
 
-            $table->foreign('type_id')->references('id')->on('FlowerTypes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('type_id')->references('id')->on('Flower_Types')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
