@@ -5,7 +5,7 @@
 <div class="content">
     <h2>Catalog</h2>
     <div class="content-container">
-        <form method="post" action="{{ url('home') }}">
+        <form method="post" action="{{ url('home') }}" class="mb-4">
             @csrf
             <div class="form-group row">
                 <div class="col-md-6 offset-md-3">
@@ -16,14 +16,23 @@
                 </div>
             </div>
         </form>
-        <table>
+        <div class="row">
             @foreach($flowers as $flower)
-                <tr>
-                    <td>{{ $flower->name }}</td>
-                    <td><img src="{{ $flower->image }}"></td>
-                </tr>
+            <div class="col-sm-3 mb-3">
+                <div class="card h-100 border-primary text-left">
+                    <img src="{{ $flower->image }}" class="card-image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $flower->name }}</h5>
+                        <p class="card-text">{{ $flower->description }}</p>
+                        <div class="text-center">
+                            <a href="#" class="btn-card btn-primary">Details</a>
+                            <a href="#" class="btn-card btn-primary">Order</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @endforeach
-        </table>
+        </div>
         <div>{{ $flowers->links() }}</div>
     </div>
 </div>
