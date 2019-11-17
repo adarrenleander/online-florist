@@ -10,14 +10,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-            @guest
-            @else
+            @auth
                 <li>
                     <a class="nav-link" href="{{ route('home') }}">{{ __('Catalog') }}</a>
                 </li>
                 <li>
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Profile') }}</a>
                 </li>
+
+                @if (Auth::user()->role == 'admin')
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         Admin Menu<span class="caret"></span>
@@ -41,7 +42,8 @@
                         </a>
                     </div>
                 </li>
-            @endguest
+                @endif
+            @endauth
             </ul>
 
             <!-- Right Side Of Navbar -->
