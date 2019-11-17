@@ -1,14 +1,15 @@
 @extends('layouts.app')
-@section('title', 'Catalog - Online Florist')
+@section('title', 'Manage Flowers - Online Florist')
 
 @section('content')
 <div class="content">
-    <h2>Catalog</h2>
+    <h2>Manage Flowers</h2>
     <div class="content-container">
-        <form action="{{ route('home') }}" method="post" class="mb-4">
+        <a href="#" class="btn btn-primary mb-4">Insert Flower</a>
+        <form action="{{ route('manage-flowers') }}" method="post" class="mb-4">
             @csrf
             <div class="form-group row">
-                <input type="text" class="form-control col-md-6 py-4" name="search" placeholder="I want to buy...">
+                <input type="text" class="form-control col-md-6 py-4" name="search" placeholder="I want to find...">
                 <button type="submit" class="btn btn-primary ml-3">
                     {{ __('Search') }}
                 </button>
@@ -23,8 +24,8 @@
                         <h5 class="card-title">{{ $flower->name }}</h5>
                         <p class="card-text">{{ $flower->description }}</p>
                         <div class="clearfix">
-                            <a href="/flower-details/{{ $flower->id }}" class="btn btn-primary float-left">Details</a>
-                            <a href="#" class="btn btn-primary float-right">Order</a>
+                            <a href="/manage-flowers/update/{{ $flower->id }}" class="btn btn-secondary float-left">Update</a>
+                            <a href="/manage-flowers/delete/{{ $flower->id }}" class="btn btn-primary float-right">Delete</a>
                         </div>
                     </div>
                 </div>

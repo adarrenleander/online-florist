@@ -17,7 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// HOME (CATALOG) page
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@search');
 
+// FLOWER DETAILS page
 Route::get('/flower-details/{id}', 'FlowerDetailsController@index');
+
+// MANAGE FLOWERS page
+Route::get('/manage-flowers', 'ManageFlowersController@index')->name('manage-flowers');
+Route::post('/manage-flowers', 'ManageFlowersController@search');
+Route::group(['prefix' => '/manage-flowers'], function() {
+    Route::get('/insert', 'ManageFlowersController@insert');
+    Route::get('/update/{id}', 'ManageFlowersController@update');
+    Route::get('/delete/{id}', 'ManageFlowersController@delete');
+});
