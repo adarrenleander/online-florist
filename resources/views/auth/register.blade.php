@@ -5,7 +5,7 @@
 <div class="content log-reg">
     <h2>Register</h2>
     <div class="content-container">
-        <form action="{{ route('register') }}" method="post">
+        <form action="{{ route('register') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -96,7 +96,7 @@
             <div class="form-group row">
                 <label for="profile_picture" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
                 <div class="col-md-6">
-                    <input id="profile_picture" type="file" class="form-control @error('image') is-invalid @enderror" name="profile_picture" value="{{ old('profile_picture') }}">
+                    <input id="profile_picture" type="file" class="form-control @error('profile_picture') is-invalid @enderror" name="profile_picture" value="{{ old('profile_picture') }}">
                     @error('profile_picture')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

@@ -57,7 +57,7 @@ class RegisterController extends Controller
             'phone' => 'required|regex:/^[0-9]+$/i|min:8|max:12',
             'gender' => 'required|in:male,female',
             'address' => 'required|min:10',
-            'profile_picture' => 'required'/*|mimes:jpeg,png,jpg'*/
+            'profile_picture' => 'required|mimes:jpeg,png,jpg',
         ];
 
         return Validator::make($data, $rules);
@@ -71,15 +71,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $image = $data['profile_picture'];
-        $imageWords = explode('.', $image);
-        $imageExtension = $imageWords[count($imageWords)-1];
-        $imageName = '/storage/images/users/'.$data['name'].'.'.$imageExtension;
+        $image = $data['profile_picture'];  // this is an UploadedFile object
+        $imageExtension = $image->extension();
+        $imageName = $data['name'].'.'.$imageExtension;
 
-        // cannot retrieve image file
-        // Storage::putFileAs('public/images', $image, $imageName);
+        Storage::putFileAs('public/images/users/', $image, $imageName);
 
-        // dd($data);
+        $imagePath = '/storage/images/users/'.$imageName;
 
         return User::create([
             'name' => $data['name'],
@@ -88,7 +86,7 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'gender' => $data['gender'],
             'address' => $data['address'],
-            'profile_picture' => $imageName,
+            'profile_picture' => $imagePath,
             'role' => 'member'
         ]);
     }
