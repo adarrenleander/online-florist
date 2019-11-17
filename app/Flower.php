@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Flower extends Model
 {
-    public function flowerTypes() {
+    public function flowerType() {
         return $this->belongsTo('App\FlowerType');
     }
 

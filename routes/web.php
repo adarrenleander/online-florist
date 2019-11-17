@@ -29,6 +29,7 @@ Route::get('/manage-flowers', 'ManageFlowersController@index')->name('manage-flo
 Route::post('/manage-flowers', 'ManageFlowersController@search');
 Route::group(['prefix' => '/manage-flowers'], function() {
     Route::get('/insert', 'ManageFlowersController@insert');
-    Route::get('/update/{id}', 'ManageFlowersController@update');
+    Route::get('/update/{id}', 'ManageFlowersController@getUpdate');
+    Route::post('/update/{id}', 'ManageFlowersController@postUpdate');
     Route::get('/delete/{id}', 'ManageFlowersController@delete');
 });

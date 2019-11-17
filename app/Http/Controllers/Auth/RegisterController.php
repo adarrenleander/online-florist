@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -56,7 +57,7 @@ class RegisterController extends Controller
             'phone' => 'required|regex:/^[0-9]+$/i|min:8|max:12',
             'gender' => 'required|in:male,female',
             'address' => 'required|min:10',
-            // 'profile_picture' => 'required'/*'|mimes:jpeg,png,jpg'*/
+            'profile_picture' => 'required'/*|mimes:jpeg,png,jpg'*/
         ];
 
         return Validator::make($data, $rules);
@@ -70,10 +71,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // $image = $data->file('image');
-        // $imageName = 'storage/img/'.$data->name.'.'.$image->GetClientOriginalExtension();
+        $image = $data['profile_picture'];
+        $imageWords = explode('.', $image);
+        $imageExtension = $imageWords[count($imageWords)-1];
+        $imageName = '/storage/images/users/'.$data['name'].'.'.$imageExtension;
 
-        // Storage::putFileAs('public/img', $image, $imageName);
+        // cannot retrieve image file
+        // Storage::putFileAs('public/images', $image, $imageName);
 
         // dd($data);
 
@@ -84,7 +88,7 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'gender' => $data['gender'],
             'address' => $data['address'],
-            'profile_picture' => 'image',
+            'profile_picture' => $imageName,
             'role' => 'member'
         ]);
     }
