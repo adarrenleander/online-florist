@@ -43,7 +43,7 @@ class FlowerSeeder extends Seeder
             'name' => 'Classic Midnight',
             'type_id' => 1,
             'price' => 435000,
-            'description' => 'A classic icon of red roses, babys breath and fresh leaves, packed in black wrapping paper with a mesmerizing red ribbon.',
+            'description' => 'A classic icon of red roses, babys breath and fresh leaves, tied with a mesmerizing red ribbon.',
             'stock' => 30,
             'image' => 'storage/images/flowers/classic-midnight.jpg'
         ]);
@@ -52,7 +52,7 @@ class FlowerSeeder extends Seeder
             'name' => 'Morning Snuggle',
             'type_id' => 2,
             'price' => 695000,
-            'description' => 'An elegant bouquet of soft pink lilies wrapped in subtle brown paper, decorated with chrysanthemums and alang-alang.',
+            'description' => 'An elegant bouquet of soft pink lilies wrapped in subtle brown paper.',
             'stock' => 20,
             'image' => 'storage/images/flowers/morning-snuggle.jpg'
         ]);
@@ -79,7 +79,7 @@ class FlowerSeeder extends Seeder
             'name' => 'Sunflower Burst',
             'type_id' => 3,
             'price' => 395000,
-            'description' => '3 stalks of exquisite sunflowers wrapped in simple black and bronze paper that is guaranteed to brighten up your day.',
+            'description' => '3 stalks of exquisite sunflowers wrapped in simple black and bronze paper.',
             'stock' => 35,
             'image' => 'storage/images/flowers/sunflower-burst.jpg'
         ]);
@@ -88,7 +88,7 @@ class FlowerSeeder extends Seeder
             'name' => 'Tropical Sunshine',
             'type_id' => 4,
             'price' => 450000,
-            'description' => 'A beautiful flower bouquet of yellow and pink gerberas, complemented with some snapdragons, hydragenas and leaves.',
+            'description' => 'A beautiful flower bouquet of yellow and pink gerberas with some snapdragons, hydragenas and leaves.',
             'stock' => 20,
             'image' => 'storage/images/flowers/tropical-sunshine.jpg'
         ]);
@@ -106,7 +106,7 @@ class FlowerSeeder extends Seeder
             'name' => 'Pink Blush',
             'type_id' => 4,
             'price' => 350000,
-            'description' => 'Shades of pink and burst of red make ment to explore more.',
+            'description' => 'Beautiful pink and red gerberas wrapped together using all-pink decorations.',
             'stock' => 25,
             'image' => 'storage/images/flowers/pink-blush.jpg'
         ]);
@@ -151,7 +151,7 @@ class FlowerSeeder extends Seeder
             'name' => 'Sunset Paradise',
             'type_id' => 6,
             'price' => 760000,
-            'description' => 'An extravagant hand bouquet of 10 two-toned orange yellow tulips, completed with eucalyptus and cordyline, wrapped in classic black wrapping paper.',
+            'description' => 'An extravagant hand bouquet of 10 two-toned orange yellow tulips, wrapped in classic black wrapping paper.',
             'stock' => 15,
             'image' => 'storage/images/flowers/sunset-paradise.jpg'
         ]);

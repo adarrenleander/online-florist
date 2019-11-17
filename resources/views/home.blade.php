@@ -17,8 +17,8 @@
             </div>
         </form>
         <div class="row">
-            @foreach($flowers as $flower)
-            <div class="col-sm-3 mb-3">
+            @foreach ($flowers as $flower)
+            <div class="col-md mb-4">
                 <div class="card h-100 border-primary text-left">
                     <img src="{{ $flower->image }}" class="card-image">
                     <div class="card-body">
@@ -31,6 +31,18 @@
                     </div>
                 </div>
             </div>
+
+            @if ($loop->last)
+                @for ($i = 0; $i < 10 - $loop->count; $i++)
+                    <div class="col-md mb-4"></div>
+                @endfor
+                @break
+            @endif
+
+            @if ($loop->index == 4)
+        </div>
+        <div class="row">
+            @endif
             @endforeach
         </div>
         <div>{{ $flowers->links() }}</div>
