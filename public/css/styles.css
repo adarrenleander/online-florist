@@ -65,7 +65,20 @@ h2 {
     padding: 10px;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+    opacity: 1;
+}
+
 /***** OVERWRITING BOOTSTRAP *****/
+.text-primary {
+    color: #ee3322 !important;
+}
+
+.border-right {
+    border-right: 1px solid #ee3322 !important;
+}
+
 .row {
     margin-right: 0;
     margin-left: 0;
