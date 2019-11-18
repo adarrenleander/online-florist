@@ -22,15 +22,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@search');
 
 // FLOWER DETAILS page
-Route::get('/flower-details/{id}', 'FlowerDetailsController@index');
+Route::get('/flower-details/{id}', 'FlowerController@detail');
 
 // MANAGE FLOWERS page
-Route::get('/manage-flowers', 'ManageFlowersController@index');
-Route::post('/manage-flowers', 'ManageFlowersController@search');
+Route::get('/manage-flowers', 'FlowerController@index');
+Route::post('/manage-flowers', 'FlowerController@search');
+
 Route::group(['prefix' => '/manage-flowers'], function() {
-    Route::get('/insert', 'ManageFlowersController@showInsert');
-    Route::post('/insert', 'ManageFlowersController@insert');
-    Route::get('/update/{id}', 'ManageFlowersController@showUpdate');
-    Route::post('/update/{id}', 'ManageFlowersController@update');
-    Route::get('/delete/{id}', 'ManageFlowersController@delete');
+    Route::get('/insert', 'FlowerController@showInsert');
+    Route::post('/insert', 'FlowerController@insert');
+    Route::get('/update/{id}', 'FlowerController@showUpdate');
+    Route::post('/update/{id}', 'FlowerController@update');
+    Route::get('/delete/{id}', 'FlowerController@delete');
 });

@@ -8,8 +8,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-class ManageFlowersController extends Controller
+class FlowerController extends Controller
 {
+    public function detail($id) {
+        $data = [
+            'flower' => Flower::where('id', '=', $id)->first()
+        ];
+
+        return view('flower_details')->with($data);
+    }
+
     public function index() {
         $data = [
             'flowers' => Flower::paginate(10)
@@ -67,14 +75,12 @@ class ManageFlowersController extends Controller
             $flower->description = $request->description;
             $flower->stock = $request->stock;
 
-            if (isset($request->image)) {
-                $image = $request->file('image');
-                $imageExtension = $image->getClientOriginalExtension();
-                $imageName = $request->name.'.'.$imageExtension;
-                $flower->image = '/storage/images/flowers/'.$imageName;
+            $image = $request->file('image');
+            $imageExtension = $image->getClientOriginalExtension();
+            $imageName = $request->name.'.'.$imageExtension;
+            $flower->image = '/storage/images/flowers/'.$imageName;
 
-                Storage::putFileAs('public/images/flowers/', $image, $imageName);
-            }
+            Storage::putFileAs('public/images/flowers/', $image, $imageName);
 
             $flower->save();
         }
@@ -122,14 +128,12 @@ class ManageFlowersController extends Controller
             $flower->description = $request->description;
             $flower->stock = $request->stock;
 
-            if (isset($request->image)) {
-                $image = $request->file('image');
-                $imageExtension = $image->getClientOriginalExtension();
-                $imageName = $request->name.'.'.$imageExtension;
-                $flower->image = '/storage/images/flowers/'.$imageName;
+            $image = $request->file('image');
+            $imageExtension = $image->getClientOriginalExtension();
+            $imageName = $request->name.'.'.$imageExtension;
+            $flower->image = '/storage/images/flowers/'.$imageName;
 
-                Storage::putFileAs('public/images/flowers/', $image, $imageName);
-            }
+            Storage::putFileAs('public/images/flowers/', $image, $imageName);
 
             $flower->save();
         }
