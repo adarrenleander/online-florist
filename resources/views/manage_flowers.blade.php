@@ -5,8 +5,8 @@
 <div class="content">
     <h2>Manage Flowers</h2>
     <div class="content-container">
-        <a href="#" class="btn btn-primary mb-4">Insert Flower</a>
-        <form action="{{ route('manage-flowers') }}" method="post" class="mb-4">
+        <a href="/manage-flowers/insert" class="btn btn-primary mb-4">Insert Flower</a>
+        <form action="/manage-flowers" method="post" class="mb-4">
             @csrf
             <div class="form-group row">
                 <input type="text" class="form-control col-md-6 py-4" name="search" placeholder="I want to find...">

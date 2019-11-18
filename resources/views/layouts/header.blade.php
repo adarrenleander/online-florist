@@ -25,7 +25,7 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('manage-flowers') }}">
+                        <a class="dropdown-item" href="/manage-flowers">
                             {{ __('Manage Flowers') }}
                         </a>
                         <a class="dropdown-item" href="{{ route('login') }}">
