@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class FlowerController extends Controller
 {
-    public function detail($id) {
+    public function details($id) {
         $data = [
             'flower' => Flower::where('id', '=', $id)->first()
         ];

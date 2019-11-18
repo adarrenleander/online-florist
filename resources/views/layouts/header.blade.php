@@ -28,7 +28,7 @@
                         <a class="dropdown-item" href="/manage-flowers">
                             {{ __('Manage Flowers') }}
                         </a>
-                        <a class="dropdown-item" href="{{ route('login') }}">
+                        <a class="dropdown-item" href="/manage-flower-types">
                             {{ __('Manage Flower Types') }}
                         </a>
                         <a class="dropdown-item" href="{{ route('login') }}">
