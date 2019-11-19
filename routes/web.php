@@ -45,3 +45,14 @@ Route::group(['prefix' => '/manage-flower-types'], function() {
     Route::post('/update/{id}', 'FlowerTypeController@update');
     Route::get('/delete/{id}', 'FlowerTypeController@delete');
 });
+
+// MANAGE COURIERS page
+Route::group(['prefix' => '/manage-couriers'], function() {
+    Route::get('/', 'CourierController@index');
+    Route::post('/', 'CourierController@search');
+    Route::get('/insert', 'CourierController@showInsert');
+    Route::post('/insert', 'CourierController@insert');
+    Route::get('/update/{id}', 'CourierController@showUpdate');
+    Route::post('/update/{id}', 'CourierController@update');
+    Route::get('/delete/{id}', 'CourierController@delete');
+});

@@ -30,8 +30,8 @@
                 </div>
             </div>
 
-            @if ($loop->last)
-                @for ($i = 0; $i < 10 - $loop->count; $i++)
+            @if ($loop->last && ($loop->count % 5 != 0))
+                @for ($i = 0; $i < 5 - ($loop->count % 5); $i++)
                     <div class="col-md mb-4"></div>
                 @endfor
                 @break

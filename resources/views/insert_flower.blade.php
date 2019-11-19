@@ -22,7 +22,7 @@
             <div class="form-group row">
                 <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Flower Price') }}</label>
                 <div class="col-md-6">
-                    <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" autocomplete="none">
+                    <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" autocomplete="none" min="0">
                     @error('price')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -34,7 +34,7 @@
             <div class="form-group row">
                 <label for="stock" class="col-md-4 col-form-label text-md-right">{{ __('Flower Stock') }}</label>
                 <div class="col-md-6">
-                    <input id="stock" type="number" class="form-control @error('stock') is-invalid @enderror" name="stock" value="{{ old('stock') }}" autocomplete="none">
+                    <input id="stock" type="number" class="form-control @error('stock') is-invalid @enderror" name="stock" value="{{ old('stock') }}" autocomplete="none" min="0">
                     @error('stock')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
