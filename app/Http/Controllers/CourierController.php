@@ -13,7 +13,7 @@ class CourierController extends Controller
             'couriers' => Courier::paginate(10)
         ];
 
-        return view('manage_couriers')->with($data);
+        return view('couriers.manage_couriers')->with($data);
     }
 
     public function search(Request $request) {
@@ -23,11 +23,11 @@ class CourierController extends Controller
             'couriers' => Courier::where('courier_name', 'like', '%'.$search.'%')->paginate(10)
         ];
 
-        return view('manage_couriers')->with($data);
+        return view('couriers.manage_couriers')->with($data);
     }
 
     public function showInsert() {
-        return view('insert_courier');
+        return view('couriers.insert_courier');
     }
 
     public function insert(Request $request) {
@@ -57,7 +57,7 @@ class CourierController extends Controller
             'courier' => Courier::where('id', '=', $id)->first()
         ];
 
-        return view('update_courier')->with($data);
+        return view('couriers.update_courier')->with($data);
     }
 
     public function update(Request $request, $id) {

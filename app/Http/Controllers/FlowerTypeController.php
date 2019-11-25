@@ -13,7 +13,7 @@ class FlowerTypeController extends Controller
             'flowerTypes' => FlowerType::paginate(10)
         ];
 
-        return view('manage_flower_types')->with($data);
+        return view('flower_types.manage_flower_types')->with($data);
     }
 
     public function search(Request $request) {
@@ -23,11 +23,11 @@ class FlowerTypeController extends Controller
             'flowerTypes' => FlowerType::where('type_name', 'like', '%'.$search.'%')->paginate(10)
         ];
 
-        return view('manage_flower_types')->with($data);
+        return view('flower_types.manage_flower_types')->with($data);
     }
 
     public function showInsert() {
-        return view('insert_flower_type');
+        return view('flower_types.insert_flower_type');
     }
 
     public function insert(Request $request) {
@@ -55,7 +55,7 @@ class FlowerTypeController extends Controller
             'flowerType' => FlowerType::where('id', '=', $id)->first(),
         ];
 
-        return view('update_flower_type')->with($data);
+        return view('flower_types.update_flower_type')->with($data);
     }
 
     public function update(Request $request, $id) {

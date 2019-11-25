@@ -15,7 +15,7 @@ class FlowerController extends Controller
             'flower' => Flower::where('id', '=', $id)->first()
         ];
 
-        return view('flower_details')->with($data);
+        return view('flowers.flower_details')->with($data);
     }
 
     public function index() {
@@ -23,7 +23,7 @@ class FlowerController extends Controller
             'flowers' => Flower::paginate(10)
         ];
 
-        return view('manage_flowers')->with($data);
+        return view('flowers.manage_flowers')->with($data);
     }
 
     public function search(Request $request) {
@@ -33,7 +33,7 @@ class FlowerController extends Controller
             'flowers' => Flower::where('name', 'like', '%'.$search.'%')->orWhere('description', 'like', '%'.$search.'%')->paginate(10)
         ];
 
-        return view('manage_flowers')->with($data);
+        return view('flowers.manage_flowers')->with($data);
     }
 
     public function showInsert() {
@@ -41,7 +41,7 @@ class FlowerController extends Controller
             'types' => FlowerType::all()
         ];
 
-        return view('insert_flower')->with($data);
+        return view('flowers.insert_flower')->with($data);
     }
 
     public function insert(Request $request) {
@@ -94,7 +94,7 @@ class FlowerController extends Controller
             'types' => FlowerType::all()
         ];
 
-        return view('update_flower')->with($data);
+        return view('flowers.update_flower')->with($data);
     }
 
     public function update(Request $request, $id) {
