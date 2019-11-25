@@ -27,7 +27,6 @@ Route::get('/flower-details/{id}', 'FlowerController@details');
 // MANAGE FLOWERS page
 Route::group(['prefix' => '/manage-flowers'], function() {
     Route::get('/', 'FlowerController@index');
-    Route::post('/', 'FlowerController@search');
     Route::get('/insert', 'FlowerController@showInsert');
     Route::post('/insert', 'FlowerController@insert');
     Route::get('/update/{id}', 'FlowerController@showUpdate');
@@ -38,7 +37,6 @@ Route::group(['prefix' => '/manage-flowers'], function() {
 // MANAGE FLOWER TYPES page
 Route::group(['prefix' => '/manage-flower-types'], function() {
     Route::get('/', 'FlowerTypeController@index');
-    Route::post('/', 'FlowerTypeController@search');
     Route::get('/insert', 'FlowerTypeController@showInsert');
     Route::post('/insert', 'FlowerTypeController@insert');
     Route::get('/update/{id}', 'FlowerTypeController@showUpdate');
@@ -49,7 +47,6 @@ Route::group(['prefix' => '/manage-flower-types'], function() {
 // MANAGE COURIERS page
 Route::group(['prefix' => '/manage-couriers'], function() {
     Route::get('/', 'CourierController@index');
-    Route::post('/', 'CourierController@search');
     Route::get('/insert', 'CourierController@showInsert');
     Route::post('/insert', 'CourierController@insert');
     Route::get('/update/{id}', 'CourierController@showUpdate');

@@ -6,10 +6,9 @@
     <h2>Manage Flowers</h2>
     <div class="content-container">
         <a href="/manage-flowers/insert" class="btn btn-primary mb-4">Insert Flower</a>
-        <form action="/manage-flowers" method="post" class="mb-4">
-            @csrf
+        <form action="/{{ request()->path() }}" method="get" class="mb-4">
             <div class="form-group row">
-                <input type="text" class="form-control col-md-6 py-4" name="search" placeholder="I want to find...">
+                <input type="search" class="form-control col-md-6 py-4" name="search" placeholder="I want to find...">
                 <button type="submit" class="btn btn-primary ml-3">
                     {{ __('Search') }}
                 </button>
@@ -44,7 +43,7 @@
             @endif
             @endforeach
         </div>
-        <div>{{ $flowers->links() }}</div>
+        <div>{{ $flowers->appends(request()->query())->links() }}</div>
     </div>
 </div>
 @endsection

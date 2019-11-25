@@ -8,15 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 class CourierController extends Controller
 {
-    public function index() {
-        $data = [
-            'couriers' => Courier::paginate(10)
-        ];
-
-        return view('couriers.manage_couriers')->with($data);
-    }
-
-    public function search(Request $request) {
+    public function index(Request $request) {
         $search = $request->search;
 
         $data = [

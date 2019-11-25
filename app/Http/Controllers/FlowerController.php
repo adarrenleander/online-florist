@@ -18,15 +18,7 @@ class FlowerController extends Controller
         return view('flowers.flower_details')->with($data);
     }
 
-    public function index() {
-        $data = [
-            'flowers' => Flower::paginate(10)
-        ];
-
-        return view('flowers.manage_flowers')->with($data);
-    }
-
-    public function search(Request $request) {
+    public function index(Request $request) {
         $search = $request->search;
 
         $data = [

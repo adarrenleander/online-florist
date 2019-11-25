@@ -8,15 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 class FlowerTypeController extends Controller
 {
-    public function index() {
-        $data = [
-            'flowerTypes' => FlowerType::paginate(10)
-        ];
-
-        return view('flower_types.manage_flower_types')->with($data);
-    }
-
-    public function search(Request $request) {
+    public function index(Request $request) {
         $search = $request->search;
 
         $data = [
