@@ -15,7 +15,7 @@
                     <a class="nav-link" href="{{ route('home') }}">{{ __('Catalog') }}</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Profile') }}</a>
+                    <a class="nav-link" href="/profile">{{ __('Profile') }}</a>
                 </li>
 
                 @if (Auth::user()->role == 'admin')

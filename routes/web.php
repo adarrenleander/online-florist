@@ -53,3 +53,14 @@ Route::group(['prefix' => '/manage-couriers'], function() {
     Route::post('/update/{id}', 'CourierController@update');
     Route::get('/delete/{id}', 'CourierController@delete');
 });
+
+// PROFILE page
+Route::group(['prefix' => '/profile'], function() {
+    Route::get('/', 'UserController@profile');
+    Route::post('/update/{id}', 'UserController@updateProfile');
+});
+
+// MANAGE USERS page
+Route::group(['prefix' => '/manage-users'], function() {
+    Route::get('/', 'UserController@index');
+});
