@@ -64,6 +64,18 @@ class UserController extends Controller
             'users' => User::all()
         ];
 
-        return view('manage_users')->with($data);
+        return view('users.manage_users')->with($data);
+    }
+
+    public function showUpdate($id) {
+
+    }
+
+    public function update(Request $request, $id) {
+
+    }
+
+    public function delete($id) {
+        
     }
 }

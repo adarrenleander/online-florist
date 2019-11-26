@@ -63,4 +63,7 @@ Route::group(['prefix' => '/profile'], function() {
 // MANAGE USERS page
 Route::group(['prefix' => '/manage-users'], function() {
     Route::get('/', 'UserController@index');
+    Route::get('/update/{id}', 'UserController@showUpdate');
+    Route::post('/update/{id}', 'UserController@update');
+    Route::get('/delete/{id}', 'UserController@delete');
 });

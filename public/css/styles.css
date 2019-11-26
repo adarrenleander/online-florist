@@ -70,6 +70,10 @@ input[type=number]::-webkit-outer-spin-button {
     opacity: 1;
 }
 
+td img {
+    width: 100px;
+}
+
 /***** OVERWRITING BOOTSTRAP *****/
 .text-primary {
     color: #ee3322 !important;

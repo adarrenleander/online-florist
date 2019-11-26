@@ -34,7 +34,7 @@
                         <a class="dropdown-item" href="/manage-couriers">
                             {{ __('Manage Couriers') }}
                         </a>
-                        <a class="dropdown-item" href="{{ route('login') }}">
+                        <a class="dropdown-item" href="/manage-users">
                             {{ __('Manage Users') }}
                         </a>
                         <a class="dropdown-item" href="{{ route('login') }}">

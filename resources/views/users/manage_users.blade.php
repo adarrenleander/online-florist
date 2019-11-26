@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('title', 'Manage Users - Online Florist')
 
 @section('content')
@@ -6,7 +6,7 @@
     <h2>Manage Profile</h2>
     <div class="content-container">
         <div class="table-responsive-md">
-            <table class="table table-hover">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Picture</th>
@@ -18,6 +18,22 @@
                         <th>Action</th>
                     </tr>
                 </thead>
+                <tbody>
+                @foreach ($users as $user)
+                    <tr>
+                        <td><img src="{{ $user->profile_picture }}"></td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->phone }}</td>
+                        <td>{{ $user->gender }}</td>
+                        <td>{{ $user->address }}</td>
+                        <td>
+                            <a href="/manage-users/update/{{ $user->id }}" class="btn btn-secondary">Update</a>
+                            <a href="/manage-users/delete/{{ $user->id }}" class="btn btn-primary">Delete</a>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
             </table>
         </div>
     </div>
