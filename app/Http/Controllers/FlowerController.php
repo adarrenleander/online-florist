@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Flower;
 use App\FlowerType;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -12,7 +13,8 @@ class FlowerController extends Controller
 {
     public function details($id) {
         $data = [
-            'flower' => Flower::where('id', '=', $id)->first()
+            'flower' => Flower::where('id', '=', $id)->first(),
+            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
         ];
 
         return view('flowers.flower_details')->with($data);
@@ -22,7 +24,8 @@ class FlowerController extends Controller
         $search = $request->search;
 
         $data = [
-            'flowers' => Flower::where('name', 'like', '%'.$search.'%')->orWhere('description', 'like', '%'.$search.'%')->paginate(10)
+            'flowers' => Flower::where('name', 'like', '%'.$search.'%')->orWhere('description', 'like', '%'.$search.'%')->paginate(10),
+            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
         ];
 
         return view('flowers.manage_flowers')->with($data);
@@ -30,7 +33,8 @@ class FlowerController extends Controller
 
     public function showInsert() {
         $data = [
-            'types' => FlowerType::all()
+            'types' => FlowerType::all(),
+            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
         ];
 
         return view('flowers.insert_flower')->with($data);
@@ -83,7 +87,8 @@ class FlowerController extends Controller
     public function showUpdate($id) {
         $data = [
             'flower' => Flower::where('id', '=', $id)->first(),
-            'types' => FlowerType::all()
+            'types' => FlowerType::all(),
+            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
         ];
 
         return view('flowers.update_flower')->with($data);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\FlowerType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class FlowerTypeController extends Controller
@@ -12,14 +13,19 @@ class FlowerTypeController extends Controller
         $search = $request->search;
 
         $data = [
-            'flowerTypes' => FlowerType::where('type_name', 'like', '%'.$search.'%')->paginate(10)
+            'flowerTypes' => FlowerType::where('type_name', 'like', '%'.$search.'%')->paginate(10),
+            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
         ];
 
         return view('flower_types.manage_flower_types')->with($data);
     }
 
     public function showInsert() {
-        return view('flower_types.insert_flower_type');
+        $data = [
+            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+        ];
+
+        return view('flower_types.insert_flower_type')->with($data);
     }
 
     public function insert(Request $request) {
@@ -45,6 +51,7 @@ class FlowerTypeController extends Controller
     public function showUpdate($id) {
         $data = [
             'flowerType' => FlowerType::where('id', '=', $id)->first(),
+            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
         ];
 
         return view('flower_types.update_flower_type')->with($data);

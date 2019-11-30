@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -15,7 +16,8 @@ class UserController extends Controller
         $id = Auth::user()->id;
 
         $data = [
-            'user' => User::where('id', '=', $id)->first()
+            'user' => User::where('id', '=', $id)->first(),
+            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
         ];
 
         return view('users.profile')->with($data);
@@ -61,7 +63,8 @@ class UserController extends Controller
     // to show Manage Users page
     public function index() {
         $data = [
-            'users' => User::all()
+            'users' => User::all(),
+            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
         ];
 
         return view('users.manage_users')->with($data);
@@ -69,7 +72,8 @@ class UserController extends Controller
 
     public function showUpdate($id) {
         $data = [
-            'user' => User::where('id', '=', $id)->first()
+            'user' => User::where('id', '=', $id)->first(),
+            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
         ];
 
         return view('users.update_user')->with($data);
