@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Flower;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +25,8 @@ class HomeController extends Controller
      */
     public function index() {
         $data = [
-            'flowers' => Flower::paginate(10)
+            'flowers' => Flower::paginate(10),
+            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
         ];
 
         return view('home')->with($data);

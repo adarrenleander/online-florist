@@ -12,10 +12,10 @@
             <ul class="navbar-nav mr-auto">
             @auth
                 <li>
-                    <a class="nav-link" href="{{ route('home') }}">{{ __('Catalog') }}</a>
+                    <a class="nav-link" href="{{ route('home') }}">Catalog</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/profile">{{ __('Profile') }}</a>
+                    <a class="nav-link" href="/profile">Profile</a>
                 </li>
 
                 @if (Auth::user()->role == 'admin')
@@ -25,21 +25,11 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/manage-flowers">
-                            {{ __('Manage Flowers') }}
-                        </a>
-                        <a class="dropdown-item" href="/manage-flower-types">
-                            {{ __('Manage Flower Types') }}
-                        </a>
-                        <a class="dropdown-item" href="/manage-couriers">
-                            {{ __('Manage Couriers') }}
-                        </a>
-                        <a class="dropdown-item" href="/manage-users">
-                            {{ __('Manage Users') }}
-                        </a>
-                        <a class="dropdown-item" href="{{ route('login') }}">
-                            {{ __('Transaction History') }}
-                        </a>
+                        <a class="dropdown-item" href="/manage-flowers">Manage Flowers</a>
+                        <a class="dropdown-item" href="/manage-flower-types">Manage Flower Types</a>
+                        <a class="dropdown-item" href="/manage-couriers">Manage Couriers</a>
+                        <a class="dropdown-item" href="/manage-users">Manage Users</a>
+                        <a class="dropdown-item" href="/transaction-history">Transaction History</a>
                     </div>
                 </li>
                 @endif
@@ -51,16 +41,19 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">Register</a>
                         </li>
                     @endif
                 @else
                     <li>
-                        <a class="nav-link">{{ __('DateTime') }}</a>
+                        <a class="nav-link" href="/cart">Cart</a>
+                    </li>
+                    <li>
+                        <a class="nav-link">{{ $dateTime }}</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -71,7 +64,7 @@
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                Logout
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

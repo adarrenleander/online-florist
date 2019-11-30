@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="content">
-    <h2>Manage Profile</h2>
+    <h2>Manage Users</h2>
     <div class="content-container">
         <div class="table-responsive-md">
             <table class="table">
@@ -28,7 +28,7 @@
                         <td>{{ $user->gender }}</td>
                         <td>{{ $user->address }}</td>
                         <td>
-                            <a href="/manage-users/update/{{ $user->id }}" class="btn btn-secondary">Update</a>
+                            <a href="/manage-users/update/{{ $user->id }}" class="btn btn-secondary mb-2">Update</a>
                             <a href="/manage-users/delete/{{ $user->id }}" class="btn btn-primary">Delete</a>
                         </td>
                     </tr>
