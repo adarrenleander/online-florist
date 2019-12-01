@@ -8,9 +8,7 @@
         <form action="/{{ request()->path() }}" method="get" class="mb-4">
             <div class="form-group row">
                 <input type="text" class="form-control col-md-6 py-4" name="search" placeholder="I want to buy...">
-                <button type="submit" class="btn btn-primary ml-3">
-                    {{ __('Search') }}
-                </button>
+                <button type="submit" class="btn btn-primary ml-3">Search</button>
             </div>
         </form>
         <div class="row">
