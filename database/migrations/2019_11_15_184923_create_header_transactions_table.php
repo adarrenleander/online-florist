@@ -15,12 +15,12 @@ class CreateHeaderTransactionsTable extends Migration
     {
         Schema::create('header_transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('member_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('courier_id');
             $table->dateTime('transaction_date');
             $table->timestamps();
 
-            $table->foreign('member_id')->references('id')->on('Users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('Users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('courier_id')->references('id')->on('Couriers')->onDelete('cascade')->onUpdate('cascade');
         });
     }

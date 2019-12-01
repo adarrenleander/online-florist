@@ -82,3 +82,6 @@ Route::group(['prefix' => '/cart'], function() {
     Route::get('/remove/{flower_id}', 'TransactionController@remove');
     Route::post('/checkout', 'TransactionController@checkout');
 });
+
+// TRANSACTION HISTORY
+Route::get('/transaction-history', 'TransactionController@history');

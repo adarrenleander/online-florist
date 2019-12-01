@@ -13,13 +13,13 @@ class CartSeeder extends Seeder
     public function run()
     {
         Cart::create([
-            'member_id' => 1,
+            'user_id' => 1,
             'flower_id' => 3,
             'quantity' => 2
         ]);
 
         Cart::create([
-            'member_id' => 1,
+            'user_id' => 1,
             'flower_id' => 14,
             'quantity' => 3
         ]);

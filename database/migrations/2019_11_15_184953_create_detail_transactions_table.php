@@ -14,12 +14,12 @@ class CreateDetailTransactionsTable extends Migration
     public function up()
     {
         Schema::create('detail_transactions', function (Blueprint $table) {
-            $table->unsignedBigInteger('transaction_id');
+            $table->unsignedBigInteger('header_transaction_id');
             $table->unsignedBigInteger('flower_id');
             $table->unsignedBigInteger('quantity');
             $table->timestamps();
 
-            $table->foreign('transaction_id')->references('id')->on('Header_Transactions')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('header_transaction_id')->references('id')->on('Header_Transactions')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('flower_id')->references('id')->on('Flowers')->onDelete('cascade')->onUpdate('cascade');
         });
     }
