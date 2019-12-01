@@ -14,7 +14,7 @@ class FlowerController extends Controller
     public function details($id) {
         $data = [
             'flower' => Flower::where('id', '=', $id)->first(),
-            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+            'dateTime' => Carbon::now()->toDayDateTimeString()
         ];
 
         return view('flowers.flower_details')->with($data);
@@ -25,7 +25,7 @@ class FlowerController extends Controller
 
         $data = [
             'flowers' => Flower::where('name', 'like', '%'.$search.'%')->orWhere('description', 'like', '%'.$search.'%')->paginate(10),
-            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+            'dateTime' => Carbon::now()->toDayDateTimeString()
         ];
 
         return view('flowers.manage_flowers')->with($data);
@@ -34,7 +34,7 @@ class FlowerController extends Controller
     public function showInsert() {
         $data = [
             'types' => FlowerType::all(),
-            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+            'dateTime' => Carbon::now()->toDayDateTimeString()
         ];
 
         return view('flowers.insert_flower')->with($data);
@@ -88,7 +88,7 @@ class FlowerController extends Controller
         $data = [
             'flower' => Flower::where('id', '=', $id)->first(),
             'types' => FlowerType::all(),
-            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+            'dateTime' => Carbon::now()->toDayDateTimeString()
         ];
 
         return view('flowers.update_flower')->with($data);

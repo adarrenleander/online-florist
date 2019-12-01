@@ -20,7 +20,7 @@ class TransactionController extends Controller
             'carts' => Cart::where('user_id', '=', $id)->get(),
             'totalPrice' => Cart::where('user_id', '=', $id)->get()->sum('quantity * price'),
             'couriers' => Courier::all(),
-            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+            'dateTime' => Carbon::now()->toDayDateTimeString()
         ];
 
         return view('cart')->with($data);
@@ -67,7 +67,7 @@ class TransactionController extends Controller
     }
 
     public function checkout(Request $request) {
-        $transactionDate = Carbon::now()->setTimezone('Asia/Jakarta');
+        $transactionDate = Carbon::now();
         $user_id = Auth::user()->id;
         $carts = Cart::where('user_id', '=', $user_id)->get();
         $couriers = Courier::all();
@@ -104,7 +104,7 @@ class TransactionController extends Controller
         $data = [
             'transactions' => HeaderTransaction::all(),
             'details' => DetailTransaction::all(),
-            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+            'dateTime' => Carbon::now()->toDayDateTimeString()
         ];
         
         return view('transaction_history')->with($data);

@@ -28,7 +28,7 @@ class HomeController extends Controller
 
         $data = [
             'flowers' => Flower::where('name', 'like', '%'.$search.'%')->orWhere('description', 'like', '%'.$search.'%')->paginate(10),
-            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+            'dateTime' => Carbon::now()->toDayDateTimeString()
         ];
 
         return view('home')->with($data);
@@ -36,7 +36,7 @@ class HomeController extends Controller
 
     public function welcome() {
         $data = [
-            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+            'dateTime' => Carbon::now()->toDayDateTimeString()
         ];
     
         return view('welcome')->With($data);

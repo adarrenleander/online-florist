@@ -14,7 +14,7 @@ class CourierController extends Controller
 
         $data = [
             'couriers' => Courier::where('courier_name', 'like', '%'.$search.'%')->paginate(10),
-            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+            'dateTime' => Carbon::now()->toDayDateTimeString()
         ];
 
         return view('couriers.manage_couriers')->with($data);
@@ -22,7 +22,7 @@ class CourierController extends Controller
 
     public function showInsert() {
         $data = [
-            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+            'dateTime' => Carbon::now()->toDayDateTimeString()
         ];
 
         return view('couriers.insert_courier')->with($data);
@@ -53,7 +53,7 @@ class CourierController extends Controller
     public function showUpdate($id) {
         $data = [
             'courier' => Courier::where('id', '=', $id)->first(),
-            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+            'dateTime' => Carbon::now()->toDayDateTimeString()
         ];
 
         return view('couriers.update_courier')->with($data);

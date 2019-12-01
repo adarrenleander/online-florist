@@ -17,7 +17,7 @@ class UserController extends Controller
 
         $data = [
             'user' => User::where('id', '=', $id)->first(),
-            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+            'dateTime' => Carbon::now()->toDayDateTimeString()
         ];
 
         return view('users.profile')->with($data);
@@ -64,7 +64,7 @@ class UserController extends Controller
     public function index() {
         $data = [
             'users' => User::all(),
-            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+            'dateTime' => Carbon::now()->toDayDateTimeString()
         ];
 
         return view('users.manage_users')->with($data);
@@ -73,7 +73,7 @@ class UserController extends Controller
     public function showUpdate($id) {
         $data = [
             'user' => User::where('id', '=', $id)->first(),
-            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+            'dateTime' => Carbon::now()->toDayDateTimeString()
         ];
 
         return view('users.update_user')->with($data);
