@@ -11,8 +11,14 @@
 |
 */
 
+use Carbon\Carbon;
+
 Route::get('/', function () {
-    return view('welcome');
+    $data = [
+        'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+    ];
+
+    return view('welcome')->With($data);
 });
 
 Auth::routes();
@@ -65,5 +71,14 @@ Route::group(['prefix' => '/manage-users'], function() {
     Route::get('/', 'UserController@index');
     Route::get('/update/{id}', 'UserController@showUpdate');
     Route::post('/update/{id}', 'UserController@update');
-    Route::get('/delete/{id}', 'UserController@delete');
+    Route::get('/remove/{id}', 'UserController@remove');
+});
+
+// CART functionalities
+Route::group(['prefix' => '/cart'], function() {
+    Route::get('/', 'CartController@index');
+    Route::get('/order/{flower_id}', 'CartController@order');
+    Route::post('/add/{flower_id}', 'CartController@add');
+    Route::get('/remove/{flower_id}', 'CartController@remove');
+    Route::get('/checkout', 'CartController@checkout');
 });

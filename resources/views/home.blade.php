@@ -24,7 +24,7 @@
                         <p class="card-text">{{ $flower->description }}</p>
                         <div class="clearfix">
                             <a href="/flower-details/{{ $flower->id }}" class="btn btn-primary float-left">Details</a>
-                            <a href="#" class="btn btn-primary float-right">Order</a>
+                            <a href="/cart/order/{{ $flower->id }}" class="btn btn-primary float-right">Order</a>
                         </div>
                     </div>
                 </div>

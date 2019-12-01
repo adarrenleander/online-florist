@@ -9,27 +9,27 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Picture</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Gender</th>
-                        <th>Address</th>
-                        <th>Action</th>
+                        <th class="align-middle">Picture</th>
+                        <th class="align-middle">Name</th>
+                        <th class="align-middle">Email</th>
+                        <th class="align-middle">Phone</th>
+                        <th class="align-middle">Gender</th>
+                        <th class="align-middle">Address</th>
+                        <th class="align-middle">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach ($users as $user)
                     <tr>
-                        <td><img src="{{ $user->profile_picture }}"></td>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->phone }}</td>
-                        <td>{{ $user->gender }}</td>
-                        <td>{{ $user->address }}</td>
-                        <td>
+                        <td class="align-middle"><img src="{{ $user->profile_picture }}"></td>
+                        <td class="align-middle">{{ $user->name }}</td>
+                        <td class="align-middle">{{ $user->email }}</td>
+                        <td class="align-middle">{{ $user->phone }}</td>
+                        <td class="align-middle">{{ $user->gender }}</td>
+                        <td class="align-middle">{{ $user->address }}</td>
+                        <td class="align-middle">
                             <a href="/manage-users/update/{{ $user->id }}" class="btn btn-secondary mb-2">Update</a>
-                            <a href="/manage-users/delete/{{ $user->id }}" class="btn btn-primary">Delete</a>
+                            <a href="/manage-users/remove/{{ $user->id }}" class="btn btn-primary">Remove</a>
                         </td>
                     </tr>
                 @endforeach

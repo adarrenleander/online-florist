@@ -115,7 +115,7 @@ class UserController extends Controller
         return redirect('/manage-users');
     }
 
-    public function delete($id) {
+    public function remove($id) {
         $user = User::find($id);
         $user->delete();
 

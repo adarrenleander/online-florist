@@ -14,6 +14,10 @@ class User extends Authenticatable
         return $this->hasMany('App\HeaderTransaction');
     }
 
+    public function carts() {
+        return $this->hasMany('App\Cart');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

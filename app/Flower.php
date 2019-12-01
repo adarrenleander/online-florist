@@ -13,4 +13,8 @@ class Flower extends Model
     public function detailTransactions() {
         return $this->hasMany('App\DetailTransaction');
     }
+
+    public function carts() {
+        return $this->hasMany('App\Cart');
+    }
 }
