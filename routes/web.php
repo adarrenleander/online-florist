@@ -80,5 +80,5 @@ Route::group(['prefix' => '/cart'], function() {
     Route::get('/order/{flower_id}', 'TransactionController@order');
     Route::post('/add/{flower_id}', 'TransactionController@add');
     Route::get('/remove/{flower_id}', 'TransactionController@remove');
-    Route::get('/checkout', 'TransactionController@checkout');
+    Route::post('/checkout', 'TransactionController@checkout');
 });

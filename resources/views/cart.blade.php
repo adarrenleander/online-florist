@@ -47,7 +47,7 @@
             <div class="form-group row">
                 <label class="col-md-7 col-form-label text-md-right font-weight-bold">Total Price</label>
                 <div class="col-md-5 clearfix">
-                    <label class="float-md-left col-form-label text-md-left font-weight-bold" name="id">{{ $totalPrice }}</label>
+                    <label class="float-md-left col-form-label text-md-left font-weight-bold" name="id">{{ 'Rp. '.$totalPrice }}</label>
                     <button type="submit" class="btn btn-success float-md-right">Checkout</button>
                 </div>
             </div>
