@@ -11,15 +11,7 @@
 |
 */
 
-use Carbon\Carbon;
-
-Route::get('/', function () {
-    $data = [
-        'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
-    ];
-
-    return view('welcome')->With($data);
-});
+Route::get('/', 'HomeController@welcome');
 
 Auth::routes();
 

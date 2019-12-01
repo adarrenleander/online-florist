@@ -33,4 +33,12 @@ class HomeController extends Controller
 
         return view('home')->with($data);
     }
+
+    public function welcome() {
+        $data = [
+            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
+        ];
+    
+        return view('welcome')->With($data);
+    }
 }
