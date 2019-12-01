@@ -5,8 +5,7 @@
 <div class="content">
     <h2>Catalog</h2>
     <div class="content-container">
-        <form action="{{ route('home') }}" method="post" class="mb-4">
-            @csrf
+        <form action="/{{ request()->path() }}" method="get" class="mb-4">
             <div class="form-group row">
                 <input type="text" class="form-control col-md-6 py-4" name="search" placeholder="I want to buy...">
                 <button type="submit" class="btn btn-primary ml-3">
@@ -43,7 +42,7 @@
             @endif
             @endforeach
         </div>
-        <div>{{ $flowers->links() }}</div>
+        <div>{{ $flowers->appends(request()->query())->links() }}</div>
     </div>
 </div>
 @endsection

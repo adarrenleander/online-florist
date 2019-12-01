@@ -23,20 +23,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index() {
-        $data = [
-            'flowers' => Flower::paginate(10),
-            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
-        ];
-
-        return view('home')->with($data);
-    }
-
-    public function search(Request $request) {
+    public function index(Request $request) {
         $search = $request->search;
 
         $data = [
-            'flowers' => Flower::where('name', 'like', '%'.$search.'%')->orWhere('description', 'like', '%'.$search.'%')->paginate(10)
+            'flowers' => Flower::where('name', 'like', '%'.$search.'%')->orWhere('description', 'like', '%'.$search.'%')->paginate(10),
+            'dateTime' => Carbon::now()->setTimezone('Asia/Jakarta')->toDayDateTimeString()
         ];
 
         return view('home')->with($data);
