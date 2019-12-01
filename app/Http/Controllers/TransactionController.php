@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use App\Courier;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class CartController extends Controller
+class TransactionController extends Controller
 {
-    public function index() {
+    public function cart() {
         $id = Auth::user()->id;
         
         $data = [
@@ -62,5 +62,11 @@ class CartController extends Controller
         Cart::where([['member_id', '=', $member_id], ['flower_id', '=', $flower_id]])->delete();
 
         return redirect('/cart');
+    }
+
+    public function checkout(Request $request) {
+        $member_id = Auth::user()->id;
+        
+        return redirect('/home');
     }
 }

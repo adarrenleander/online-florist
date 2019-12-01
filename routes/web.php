@@ -76,9 +76,9 @@ Route::group(['prefix' => '/manage-users'], function() {
 
 // CART functionalities
 Route::group(['prefix' => '/cart'], function() {
-    Route::get('/', 'CartController@index');
-    Route::get('/order/{flower_id}', 'CartController@order');
-    Route::post('/add/{flower_id}', 'CartController@add');
-    Route::get('/remove/{flower_id}', 'CartController@remove');
-    Route::get('/checkout', 'CartController@checkout');
+    Route::get('/', 'TransactionController@cart');
+    Route::get('/order/{flower_id}', 'TransactionController@order');
+    Route::post('/add/{flower_id}', 'TransactionController@add');
+    Route::get('/remove/{flower_id}', 'TransactionController@remove');
+    Route::get('/checkout', 'TransactionController@checkout');
 });
