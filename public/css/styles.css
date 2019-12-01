@@ -74,6 +74,13 @@ td img {
     width: 100px;
 }
 
+.errors {
+    padding: 180px 0;
+}
+
+.errors div {
+    padding: 60px 0;
+}
 /***** OVERWRITING BOOTSTRAP *****/
 .text-primary {
     color: #ee3322 !important;

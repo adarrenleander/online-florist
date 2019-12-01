@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Courier;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -13,19 +12,14 @@ class CourierController extends Controller
         $search = $request->search;
 
         $data = [
-            'couriers' => Courier::where('courier_name', 'like', '%'.$search.'%')->paginate(10),
-            'dateTime' => Carbon::now()->toDayDateTimeString()
+            'couriers' => Courier::where('courier_name', 'like', '%'.$search.'%')->paginate(10)
         ];
 
         return view('couriers.manage_couriers')->with($data);
     }
 
     public function showInsert() {
-        $data = [
-            'dateTime' => Carbon::now()->toDayDateTimeString()
-        ];
-
-        return view('couriers.insert_courier')->with($data);
+        return view('couriers.insert_courier');
     }
 
     public function insert(Request $request) {
@@ -52,8 +46,7 @@ class CourierController extends Controller
 
     public function showUpdate($id) {
         $data = [
-            'courier' => Courier::where('id', '=', $id)->first(),
-            'dateTime' => Carbon::now()->toDayDateTimeString()
+            'courier' => Courier::where('id', '=', $id)->first()
         ];
 
         return view('couriers.update_courier')->with($data);

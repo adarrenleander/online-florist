@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Flower;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,18 +26,13 @@ class HomeController extends Controller
         $search = $request->search;
 
         $data = [
-            'flowers' => Flower::where('name', 'like', '%'.$search.'%')->orWhere('description', 'like', '%'.$search.'%')->paginate(10),
-            'dateTime' => Carbon::now()->toDayDateTimeString()
+            'flowers' => Flower::where('name', 'like', '%'.$search.'%')->orWhere('description', 'like', '%'.$search.'%')->paginate(10)
         ];
 
         return view('home')->with($data);
     }
 
     public function welcome() {
-        $data = [
-            'dateTime' => Carbon::now()->toDayDateTimeString()
-        ];
-    
-        return view('welcome')->With($data);
+        return view('welcome');
     }
 }

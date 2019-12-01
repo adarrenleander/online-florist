@@ -13,19 +13,14 @@ class FlowerTypeController extends Controller
         $search = $request->search;
 
         $data = [
-            'flowerTypes' => FlowerType::where('type_name', 'like', '%'.$search.'%')->paginate(10),
-            'dateTime' => Carbon::now()->toDayDateTimeString()
+            'flowerTypes' => FlowerType::where('type_name', 'like', '%'.$search.'%')->paginate(10)
         ];
 
         return view('flower_types.manage_flower_types')->with($data);
     }
 
     public function showInsert() {
-        $data = [
-            'dateTime' => Carbon::now()->toDayDateTimeString()
-        ];
-
-        return view('flower_types.insert_flower_type')->with($data);
+        return view('flower_types.insert_flower_type');
     }
 
     public function insert(Request $request) {
@@ -50,8 +45,7 @@ class FlowerTypeController extends Controller
 
     public function showUpdate($id) {
         $data = [
-            'flowerType' => FlowerType::where('id', '=', $id)->first(),
-            'dateTime' => Carbon::now()->toDayDateTimeString()
+            'flowerType' => FlowerType::where('id', '=', $id)->first()
         ];
 
         return view('flower_types.update_flower_type')->with($data);

@@ -6,7 +6,6 @@ use App\Cart;
 use App\Courier;
 use App\DetailTransaction;
 use App\HeaderTransaction;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -19,8 +18,7 @@ class TransactionController extends Controller
         $data = [
             'carts' => Cart::where('user_id', '=', $id)->get(),
             'totalPrice' => Cart::where('user_id', '=', $id)->get()->sum('quantity * price'),
-            'couriers' => Courier::all(),
-            'dateTime' => Carbon::now()->toDayDateTimeString()
+            'couriers' => Courier::all()
         ];
 
         return view('cart')->with($data);
@@ -103,8 +101,7 @@ class TransactionController extends Controller
     public function history() {
         $data = [
             'transactions' => HeaderTransaction::all(),
-            'details' => DetailTransaction::all(),
-            'dateTime' => Carbon::now()->toDayDateTimeString()
+            'details' => DetailTransaction::all()
         ];
         
         return view('transaction_history')->with($data);

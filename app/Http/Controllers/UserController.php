@@ -16,8 +16,7 @@ class UserController extends Controller
         $id = Auth::user()->id;
 
         $data = [
-            'user' => User::where('id', '=', $id)->first(),
-            'dateTime' => Carbon::now()->toDayDateTimeString()
+            'user' => User::where('id', '=', $id)->first()
         ];
 
         return view('users.profile')->with($data);
@@ -63,8 +62,7 @@ class UserController extends Controller
     // to show Manage Users page
     public function index() {
         $data = [
-            'users' => User::all(),
-            'dateTime' => Carbon::now()->toDayDateTimeString()
+            'users' => User::all()
         ];
 
         return view('users.manage_users')->with($data);
@@ -72,8 +70,7 @@ class UserController extends Controller
 
     public function showUpdate($id) {
         $data = [
-            'user' => User::where('id', '=', $id)->first(),
-            'dateTime' => Carbon::now()->toDayDateTimeString()
+            'user' => User::where('id', '=', $id)->first()
         ];
 
         return view('users.update_user')->with($data);
