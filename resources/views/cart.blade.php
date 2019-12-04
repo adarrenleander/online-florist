@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('title', 'Cart - Online Florist')
 
+@php
+    $totalPrice = 0
+@endphp
+
 @section('content')
 <div class="content">
     <h2>Cart</h2>
@@ -27,6 +31,9 @@
                             <a href="/cart/remove/{{ $cart->flower->id }}" class="btn btn-primary">Remove</a>
                         </td>
                     </tr>
+                    @php
+                        $totalPrice += ($cart->quantity * $cart->flower->price)
+                    @endphp
                 @endforeach
                 </tbody>
             </table>

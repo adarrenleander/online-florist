@@ -18,7 +18,6 @@ class TransactionController extends Controller
         
         $data = [
             'carts' => Cart::where('user_id', '=', $id)->get(),
-            'totalPrice' => Cart::where('user_id', '=', $id)->get()->sum('quantity * price'),
             'couriers' => Courier::all()
         ];
 

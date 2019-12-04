@@ -6,6 +6,9 @@
     <h2>Transaction History</h2>
     <div class="content-container">
         @foreach ($transactions as $transaction)
+        @php
+            $totalPrice = 0
+        @endphp
         <div class="mb-5">
             <div class="text-left">
                 <p class="my-0">Transaction ID: {{ $transaction->id }}</p>
@@ -32,13 +35,16 @@
                             <td class="align-middle">{{ $detail->quantity }}</td>
                             <td class="align-middle">{{ $detail->flower->price }}</td>
                         </tr>
+                        @php
+                            $totalPrice += ($detail->quantity * $detail->flower->price)
+                        @endphp
                         @endif
                     @endforeach
                         <tr>
                             <td></td>
                             <td class="font-weight-bold">Total</td>
                             <td></td>
-                            <td class="font-weight-bold">{{ 'Rp. '.'0' }}</td>
+                            <td class="font-weight-bold">{{ 'Rp. '.$totalPrice }}</td>
                         </tr>
                     </tbody>
                 </table>
