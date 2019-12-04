@@ -55,7 +55,7 @@
                 <label class="col-md-7 col-form-label text-md-right font-weight-bold">Total Price</label>
                 <div class="col-md-5 clearfix">
                     <label class="float-md-left col-form-label text-md-left font-weight-bold">{{ 'Rp. '.$totalPrice }}</label>
-                    <button type="submit" class="btn btn-success float-md-right">Checkout</button>
+                    <button type="submit" class="btn btn-success float-md-right" @if ($carts->isEmpty()) disabled @endif>Checkout</button>
                 </div>
             </div>
         </form>
