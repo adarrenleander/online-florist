@@ -13,6 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        // User table is created with attributes in accordance to class diagram
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('email')->unique();
@@ -23,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->string('profile_picture');
             $table->string('role');
-            // $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -10,10 +10,12 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    // each user can make many header transactions
     public function headerTransactions() {
         return $this->hasMany('App\HeaderTransaction');
     }
 
+    // each user can have many items in their cart
     public function carts() {
         return $this->hasMany('App\Cart');
     }

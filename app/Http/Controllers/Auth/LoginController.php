@@ -42,12 +42,14 @@ class LoginController extends Controller
 
     protected function sendLoginResponse(Request $request)
     {
+        // check if "Remember Me" was checked
+        // if "on", then proceed
         if ($request->remember == 'on') {
-            $cookieName = Auth::getRecallerName();
-            $cookieJar = $this->guard()->getCookieJar();
-            $cookieValue = $cookieJar->queued($cookieName)->getValue();
+            $cookieName = Auth::getRecallerName();  // get the cookie's name
+            $cookieJar = $this->guard()->getCookieJar();    // get the cookie jar that is used to store the cookies
+            $cookieValue = $cookieJar->queued($cookieName)->getValue(); // get the value of the cookie
 
-            Cookie::queue($cookieName, $cookieValue, 60);
+            Cookie::queue($cookieName, $cookieValue, 60);   // set the cookie duration to 60 minutes
         }
 
         $request->session()->regenerate();

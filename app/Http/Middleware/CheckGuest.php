@@ -16,8 +16,9 @@ class CheckGuest
      */
     public function handle($request, Closure $next)
     {
+        // this middleware checks whether user is guess or already logged in
         if (Auth::guest()) {
-            return redirect('/login');
+            return redirect('/login');  // will redirect to login page if user is not logged in yet (a guest)
         }
 
         return $next($request);

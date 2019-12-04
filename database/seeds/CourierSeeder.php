@@ -12,6 +12,8 @@ class CourierSeeder extends Seeder
      */
     public function run()
     {
+        // created 7 initial data for Couriers
+        
         Courier::create([
             'courier_name' => 'JNE',
             'shipping_cost' => 9000

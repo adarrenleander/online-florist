@@ -13,6 +13,7 @@ class CreateFlowersTable extends Migration
      */
     public function up()
     {
+        // Flowers table is created with attributes in accordance to class diagram
         Schema::create('flowers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
@@ -23,6 +24,7 @@ class CreateFlowersTable extends Migration
             $table->string('image');
             $table->timestamps();
 
+            // define a foreign key that references to the FlowerTypes table
             $table->foreign('type_id')->references('id')->on('Flower_Types')->onDelete('cascade')->onUpdate('cascade');
         });
     }

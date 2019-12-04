@@ -12,6 +12,8 @@ class FlowerTypeSeeder extends Seeder
      */
     public function run()
     {
+        // created 6 initial data for FlowerTypes
+
         FlowerType::create([
             'type_name' => 'Rose'
         ]);

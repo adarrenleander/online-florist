@@ -13,6 +13,7 @@ class CreateFlowerTypesTable extends Migration
      */
     public function up()
     {
+        // Flower_Types table is created with attributes in accordance to class diagram
         Schema::create('flower_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type_name');

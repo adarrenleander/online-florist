@@ -13,13 +13,16 @@ class CreateDetailTransactionsTable extends Migration
      */
     public function up()
     {
+        // Detail_Transaction table is created with attributes in accordance to class diagram
         Schema::create('detail_transactions', function (Blueprint $table) {
             $table->unsignedBigInteger('header_transaction_id');
             $table->unsignedBigInteger('flower_id');
             $table->unsignedBigInteger('quantity');
             $table->timestamps();
 
+            // define a foreign key that references to the Header_Transactions table
             $table->foreign('header_transaction_id')->references('id')->on('Header_Transactions')->onDelete('cascade')->onUpdate('cascade');
+            // define a foreign key that references to the Flowers table
             $table->foreign('flower_id')->references('id')->on('Flowers')->onDelete('cascade')->onUpdate('cascade');
         });
     }

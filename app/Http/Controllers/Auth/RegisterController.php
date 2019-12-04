@@ -49,6 +49,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        // validation rules for the fields
         $rules = [
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
@@ -60,6 +61,7 @@ class RegisterController extends Controller
             'profile_picture' => 'required|mimes:jpeg,png,jpg',
         ];
 
+        // conduct validation
         return Validator::make($data, $rules);
     }
 
@@ -71,14 +73,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $image = $data['profile_picture'];  // this is an UploadedFile object
-        $imageExtension = $image->extension();
-        $imageName = $data['name'].'.'.$imageExtension;
+        // the image in this case is an UploadedFile object
+        $image = $data['profile_picture'];  // get the image from form
+        $imageExtension = $image->extension();  // get the image extension
+        $imageName = $data['name'].'.'.$imageExtension; // create the image filename
+        $imagePath = '/storage/images/users/'.$imageName;   // create the image file path
 
-        Storage::putFileAs('public/images/users/', $image, $imageName);
+        Storage::putFileAs('public/images/users/', $image, $imageName); // store the image in the storage folder
 
-        $imagePath = '/storage/images/users/'.$imageName;
-
+        // create the new user
+        // new users created using the Register page are always only "member"
+        // to add new admins, must seed or insert manually to database
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

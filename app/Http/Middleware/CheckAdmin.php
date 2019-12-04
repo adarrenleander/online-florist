@@ -16,8 +16,9 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
+        // this middleware is used to check if the role of the user is admin
         if (Auth::user()->role != 'admin') {
-            abort(403);
+            abort(403); // if role is not admin, then show forbidden page
         }
         return $next($request);
     }

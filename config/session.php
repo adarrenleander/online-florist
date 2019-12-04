@@ -31,9 +31,9 @@ return [
     |
     */
 
-    'lifetime' => env('SESSION_LIFETIME', 60),
+    'lifetime' => env('SESSION_LIFETIME', 60),  // session duration is only 60 minutes idle
 
-    'expire_on_close' => true,
+    'expire_on_close' => true,  // the session will end once the browser is closed
 
     /*
     |--------------------------------------------------------------------------

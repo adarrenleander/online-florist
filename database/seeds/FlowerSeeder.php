@@ -12,6 +12,8 @@ class FlowerSeeder extends Seeder
      */
     public function run()
     {
+        // created 18 initial data for Flowers
+
         Flower::create([
             'name' => 'Eternal Red',
             'type_id' => 1,

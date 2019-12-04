@@ -11,6 +11,6 @@ class HeaderTransactionSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // not initial data
     }
 }
