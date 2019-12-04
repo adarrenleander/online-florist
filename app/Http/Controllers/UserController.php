@@ -113,8 +113,10 @@ class UserController extends Controller
     }
 
     public function remove($id) {
-        $user = User::find($id);
-        $user->delete();
+        if ($id != Auth::user()->id) {
+            $user = User::find($id);
+            $user->delete();
+        }
 
         return redirect('/manage-users');
     }
