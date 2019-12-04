@@ -22,7 +22,7 @@ class TransactionController extends Controller
             'couriers' => Courier::all()
         ];
 
-        return view('cart')->with($data);
+        return view('transactions.cart')->with($data);
     }
 
     public function order($flower_id) {
@@ -144,6 +144,6 @@ class TransactionController extends Controller
             'details' => DetailTransaction::all()
         ];
         
-        return view('transaction_history')->with($data);
+        return view('transactions.transaction_history')->with($data);
     }
 }
