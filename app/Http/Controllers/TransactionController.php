@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cart;
 use App\Courier;
 use App\DetailTransaction;
+use App\Flower;
 use App\HeaderTransaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -25,12 +26,29 @@ class TransactionController extends Controller
     }
 
     public function order($flower_id) {
-        $cart = new Cart;
-        $cart->user_id = Auth::user()->id;
-        $cart->flower_id = $flower_id;
-        $cart->quantity = 1;
+        $exists = False;
+        $user_id = Auth::user()->id;
 
-        $cart->save();
+        $currentCart = Cart::all();
+
+        foreach ($currentCart as $curr) {
+            if ($curr->flower_id == $flower_id) {
+                $newQuantity = $curr->quantity + 1;
+                Cart::where([['user_id', '=', $user_id], ['flower_id', '=', $flower_id]])->update(['quantity' => $newQuantity]);
+                
+                $exists = True;
+                break;
+            }
+        }
+
+        if (!$exists) {
+            $cart = new Cart;
+            $cart->user_id = $user_id;
+            $cart->flower_id = $flower_id;
+            $cart->quantity = 1;
+
+            $cart->save();
+        }
 
         return back();
     }
@@ -46,12 +64,29 @@ class TransactionController extends Controller
             return back()->withInput()->withErrors($validate);
         }
         else {
-            $cart = new Cart;
-            $cart->user_id = Auth::user()->id;
-            $cart->flower_id = $flower_id;
-            $cart->quantity = $request->quantity;
+            $exists = False;
+            $user_id = Auth::user()->id;
 
-            $cart->save();
+            $currentCart = Cart::all();
+
+            foreach ($currentCart as $curr) {
+                if ($curr->flower_id == $flower_id) {
+                    $newQuantity = $curr->quantity + $request->quantity;
+                    Cart::where([['user_id', '=', $user_id], ['flower_id', '=', $flower_id]])->update(['quantity' => $newQuantity]);
+                    
+                    $exists = True;
+                    break;
+                }
+            }
+
+            if (!$exists) {
+                $cart = new Cart;
+                $cart->user_id = $user_id;
+                $cart->flower_id = $flower_id;
+                $cart->quantity = $request->quantity;
+
+                $cart->save();
+            }
 
             return redirect('/cart');
         }
@@ -89,11 +124,16 @@ class TransactionController extends Controller
                 $dt->header_transaction_id = $ht->id;
                 $dt->flower_id = $cart->flower_id;
                 $dt->quantity = $cart->quantity;
+
+                $flower = Flower::where('id', '=', $cart->flower_id)->first();
+                $newStock = $flower->stock - $cart->quantity;
+                Flower::where('id', '=', $cart->flower_id)->update(['stock' => $newStock]);
+
                 $dt->save();
             }
-        }
 
-        Cart::where('user_id', '=', $user_id)->delete();
+            Cart::where('user_id', '=', $user_id)->delete();
+        }
         
         return redirect('/home');
     }

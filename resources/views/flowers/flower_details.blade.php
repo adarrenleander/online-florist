@@ -16,7 +16,7 @@
                     @csrf
                     <p>stock: {{ $flower->stock }}</p>
                     <div class="form-group row">
-                        <input type="number" min="0" name="quantity" value="0" class="form-control @error('quantity') is-invalid @enderror col-md-2">
+                        <input type="number" min="0" max="{{ $flower->stock }}" name="quantity" value="0" class="form-control @error('quantity') is-invalid @enderror col-md-2">
                         <h4 class="col-md-6 text-right text-primary font-weight-bold">{{ 'Rp. '.$flower->price }}</h4>
                         <button type="submit" class="btn btn-primary btn-sm ml-3">Add to cart</button>
                         @error('quantity')
