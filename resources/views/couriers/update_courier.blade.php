@@ -47,8 +47,10 @@
 
             <!-- update button to attempt update -->
             <div class="form-group row mb-3">
-                <div class="col-md-8 offset-md-2">Update</button>
+                <div class="col-md-8 offset-md-2">
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
+                </button>
             </div>
         </form>
     </div>
