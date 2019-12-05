@@ -20,10 +20,24 @@ class TransactionController extends Controller
     // called when initially opening the user's Cart page
     public function cart() {
         $id = Auth::user()->id; // get the id of the currently logged in user
-        
+
+        $carts = Cart::where('user_id', '=', $id)->get();
+
+        $outOfStock = False;    // to check if any items are out of stock
+        foreach ($carts as $cart) {
+            // if item is out of stock OR quantity is more than stock,
+            if ($cart->flower->stock < $cart->quantity) {
+                $outOfStock = True;
+
+                // delete cart item if stock is insufficient
+                Cart::where([['user_id', '=', $id], ['flower_id', '=', $cart->flower_id]])->delete();
+            }
+        }
+
         $data = [
             'carts' => Cart::where('user_id', '=', $id)->get(), // get the data of the cart where the user_id matches the current user's id
-            'couriers' => Courier::all()    // get all courier data
+            'couriers' => Courier::all(),    // get all courier data
+            'outOfStock' => $outOfStock // boolean value to give stock notification
         ];
 
         return view('transactions.cart')->with($data);  // display the Cart view, along with the data of the current user's cart and all courier data
@@ -35,31 +49,35 @@ class TransactionController extends Controller
         $exists = False;    // boolean value to signify whether flower exists in user's cart or not
         $user_id = Auth::user()->id;    // get the id of the currently logged in user
 
-        $currentCart = Cart::all(); // get all of the cart data
+        $currentCart = Cart::where('user_id', '=', $user_id)->get(); // get all of the cart data
+        $flower = Flower::where('id', '=', $flower_id)->first();  // get the flower to be added to cart
 
-        // iterrate over each cart data
-        // to check whether the flower to be inserted into cart already exists in the cart
-        foreach ($currentCart as $curr) {
-            if ($curr->flower_id == $flower_id) {
-                // if flower exists in the current user's cart,
-                $newQuantity = $curr->quantity + 1; // add 1 to the quantity
-                // and update the quantity in the cart
-                Cart::where([['user_id', '=', $user_id], ['flower_id', '=', $flower_id]])->update(['quantity' => $newQuantity]);
-                
-                $exists = True;
-                break;
+        // check if flower is still in stock
+        if ($flower->stock >= 1) {
+            // iterate over each cart data
+            // to check whether the flower to be inserted into cart already exists in the cart
+            foreach ($currentCart as $curr) {
+                if ($curr->flower_id == $flower_id) {
+                    // if flower exists in the current user's cart,
+                    $newQuantity = $curr->quantity + 1; // add 1 to the quantity
+                    // and update the quantity in the cart
+                    Cart::where([['user_id', '=', $user_id], ['flower_id', '=', $flower_id]])->update(['quantity' => $newQuantity]);
+                    
+                    $exists = True;
+                    break;
+                }
             }
-        }
 
-        // if flower does not exists in current user's cart
-        if (!$exists) {
-            // create an instance of a new cart data and fill in appropriate attributes
-            $cart = new Cart;
-            $cart->user_id = $user_id;
-            $cart->flower_id = $flower_id;
-            $cart->quantity = 1;
+            // if flower does not exists in current user's cart
+            if (!$exists) {
+                // create an instance of a new cart data and fill in appropriate attributes
+                $cart = new Cart;
+                $cart->user_id = $user_id;
+                $cart->flower_id = $flower_id;
+                $cart->quantity = 1;
 
-            $cart->save();  // save the cart data to the database
+                $cart->save();  // save the cart data to the database
+            }
         }
 
         return back();  // redirect back to the Home (Catalog) page
@@ -85,31 +103,35 @@ class TransactionController extends Controller
             $exists = False;    // boolean value to signify whether flower exists in user's cart or not
             $user_id = Auth::user()->id;    // get the id of the currently logged in user
 
-            $currentCart = Cart::all(); // get all of the cart data
+            $currentCart = Cart::where('user_id', '=', $user_id)->get(); // get all of the cart data
+            $flower = Flower::where('id', '=', $flower_id)->first();  // get the flower to be added to cart
 
-            // iterrate over each cart data
-            // to check whether the flower to be inserted into cart already exists in the cart
-            foreach ($currentCart as $curr) {
-                if ($curr->flower_id == $flower_id) {
-                    // if flower exists in the current user's cart,
-                    $newQuantity = $curr->quantity + $request->quantity;    // add quantity that user specified to current quantity
-                    // and update the quantity in the cart
-                    Cart::where([['user_id', '=', $user_id], ['flower_id', '=', $flower_id]])->update(['quantity' => $newQuantity]);
-                    
-                    $exists = True;
-                    break;
+            // check if flower is still in stock
+            if ($flower->stock >= $request->quantity) {
+                // iterate over each cart data
+                // to check whether the flower to be inserted into cart already exists in the cart
+                foreach ($currentCart as $curr) {
+                    if ($curr->flower_id == $flower_id) {
+                        // if flower exists in the current user's cart,
+                        $newQuantity = $curr->quantity + $request->quantity;    // add quantity that user specified to current quantity
+                        // and update the quantity in the cart
+                        Cart::where([['user_id', '=', $user_id], ['flower_id', '=', $flower_id]])->update(['quantity' => $newQuantity]);
+                        
+                        $exists = True;
+                        break;
+                    }
                 }
-            }
 
-            // if flower does not exists in current user's cart
-            if (!$exists) {
-                // create an instance of a new cart data and fill in appropriate attributes
-                $cart = new Cart;
-                $cart->user_id = $user_id;
-                $cart->flower_id = $flower_id;
-                $cart->quantity = $request->quantity;
+                // if flower does not exists in current user's cart
+                if (!$exists) {
+                    // create an instance of a new cart data and fill in appropriate attributes
+                    $cart = new Cart;
+                    $cart->user_id = $user_id;
+                    $cart->flower_id = $flower_id;
+                    $cart->quantity = $request->quantity;
 
-                $cart->save();  // save the cart data to the database
+                    $cart->save();  // save the cart data to the database
+                }
             }
 
             return redirect('/cart');   // redirect to the Cart page
@@ -141,7 +163,7 @@ class TransactionController extends Controller
             $ht = new HeaderTransaction;
             $ht->user_id = $user_id;
 
-            // iterrate over all couriers
+            // iterate over all couriers
             // to find the correct courier the user has chosen
             foreach ($couriers as $courier) {
                 if ($courier->courier_name.' - '.$courier->shipping_cost == $request->courier) {
@@ -153,7 +175,10 @@ class TransactionController extends Controller
             $ht->transaction_date = $transactionDate;
             $ht->save();    // save the header transaction data to the database
 
-            // iterrate for each cart data
+            $temp = $ht->id;    // keep header transaction's id for purchase validation
+            $purchased = False; // used to check if there are flowers purchased
+
+            // iterate for each cart data
             foreach ($carts as $cart) {
                 // create a new instance of detail transaction and fill in appropriate attributes
                 $dt = new DetailTransaction;
@@ -164,13 +189,26 @@ class TransactionController extends Controller
                 // reduce the stock of each flower based on the quantity purchased
                 $flower = Flower::where('id', '=', $cart->flower_id)->first();
                 $newStock = $flower->stock - $cart->quantity;
-                // update the stock in the database
-                Flower::where('id', '=', $cart->flower_id)->update(['stock' => $newStock]);
 
-                $dt->save();    // save each detail transaction data to the database
+                // if new stock is not empty, proceed to purchase
+                if ($newStock >= 0) {
+                    // update the stock in the database
+                    Flower::where('id', '=', $cart->flower_id)->update(['stock' => $newStock]);
+                    $dt->save();    // save each detail transaction data to the database
+
+                    $purchased = True;
+                }
+                // else do nothing
             }
 
             Cart::where('user_id', '=', $user_id)->delete();    // delete all of the current user's cart data
+
+            // if no items are purchased
+            // which means that all items to be purchsed were out of stock
+            if ($purchased == False) {
+                $delHt = HeaderTransaction::find($temp);    // get instance of the header transaction
+                $delHt->delete();   // remove the header transaction
+            }
         }
         
         return redirect('/home');   // redirect tp the Home (Catalog) page

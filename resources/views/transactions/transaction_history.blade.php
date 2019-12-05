@@ -7,7 +7,7 @@
     <div class="content-container">
         @foreach ($transactions as $transaction)
         @php
-            $totalPrice = 0
+            $totalPrice = 0;
         @endphp
         <div class="mb-5">
             <div class="text-left">
@@ -36,7 +36,7 @@
                             <td class="align-middle">{{ $detail->flower->price }}</td>
                         </tr>
                         @php
-                            $totalPrice += ($detail->quantity * $detail->flower->price)
+                            $totalPrice += ($detail->quantity * $detail->flower->price);
                         @endphp
                         @endif
                     @endforeach

@@ -21,7 +21,11 @@
                         <p class="card-text">{{ $flower->description }}</p>
                         <div class="clearfix">
                             <a href="/flower-details/{{ $flower->id }}" class="btn btn-primary float-left">Details</a>
+                            @if ($flower->stock == 0)
+                            <button class="btn btn-primary float-right" disabled>Order</b>
+                            @else
                             <a href="/cart/order/{{ $flower->id }}" class="btn btn-primary float-right">Order</a>
+                            @endif
                         </div>
                     </div>
                 </div>

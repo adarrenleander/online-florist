@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             'phone' => '085263718273',
             'gender' => 'male',
             'address' => 'Alam Sutera',
-            'profile_picture' => '/storage/images/users/Admin.png',
+            'profile_picture' => '/storage/images/users/Admin.jpg',
             'role' => 'admin'
         ]);
 
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
             'phone' => '082738271238',
             'gender' => 'male',
             'address' => 'Gading Serpong',
-            'profile_picture' => '/storage/images/users/John.png',
+            'profile_picture' => '/storage/images/users/John.jpg',
             'role' => 'member'
         ]);
     }

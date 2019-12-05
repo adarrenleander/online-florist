@@ -2,7 +2,7 @@
 @section('title', 'Cart - Online Florist')
 
 @php
-    $totalPrice = 0
+    $totalPrice = 0;
 @endphp
 
 @section('content')
@@ -32,7 +32,7 @@
                         </td>
                     </tr>
                     @php
-                        $totalPrice += ($cart->quantity * $cart->flower->price)
+                        $totalPrice += ($cart->quantity * $cart->flower->price);
                     @endphp
                 @endforeach
                 </tbody>
@@ -57,6 +57,9 @@
                     <label class="float-md-left col-form-label text-md-left font-weight-bold">{{ 'Rp. '.$totalPrice }}</label>
                     <button type="submit" class="btn btn-success float-md-right" @if ($carts->isEmpty()) disabled @endif>Checkout</button>
                 </div>
+                @if ($outOfStock)
+                <p class="col-md-12 text-md-right text-danger font-weight-bold mt-3">Some items were out of stock and removed from your cart.</p>
+                @endif
             </div>
         </form>
     </div>

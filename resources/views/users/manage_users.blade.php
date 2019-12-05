@@ -27,7 +27,7 @@
                         <td class="align-middle">{{ $user->phone }}</td>
                         <td class="align-middle">{{ $user->gender }}</td>
                         <td class="align-middle">{{ $user->address }}</td>
-                        <td class="align-middle">
+                        <td class="align-middle ">
                             <a href="/manage-users/update/{{ $user->id }}" class="btn btn-secondary mb-2">Update</a>
                             <a href="/manage-users/remove/{{ $user->id }}" class="btn btn-primary">Remove</a>
                         </td>
