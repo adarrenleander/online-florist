@@ -7,6 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- provide flexibility in title name for each page -->
     <title>@yield('title', 'Online Florist')</title>
 
     <!-- Scripts -->

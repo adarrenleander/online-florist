@@ -18,12 +18,14 @@
                     <a class="nav-link" href="/profile">Profile</a>
                 </li>
 
+                <!-- admin menu only accessible if user's role is admin -->
                 @if (Auth::user()->role == 'admin')
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         Admin Menu<span class="caret"></span>
                     </a>
 
+                    <!-- dropdown menu -->
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/manage-flowers">Manage Flowers</a>
                         <a class="dropdown-item" href="/manage-flower-types">Manage Flower Types</a>
@@ -39,6 +41,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
+                <!-- if user not logged in yet aka a guest -->
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Login</a>
@@ -53,6 +56,8 @@
                         <a class="nav-link" href="/cart">Cart</a>
                     </li>
                     <li>
+                        <!-- display current time -->
+                        <!-- does not tick in real time and uses default timezone -->
                         <a class="nav-link">{{ Carbon\Carbon::now()->toDayDateTimeString() }}</a>
                     </li>
                     <li class="nav-item dropdown">

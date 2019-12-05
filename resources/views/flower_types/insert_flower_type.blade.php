@@ -5,12 +5,15 @@
 <div class="content">
     <h2>Insert Flower Type</h2>
     <div class="content-container">
+        <!-- form for inserting new flower type -->
         <form action="/manage-flower-types/insert" method="post" enctype="multipart/form-data">
             @csrf
+            <!-- flower type name field -->
             <div class="form-group row">
                 <label for="type-name" class="col-md-4 col-form-label text-md-right">Flower Type Name</label>
                 <div class="col-md-6">
                     <input id="type-name" type="text" class="form-control @error('type_name') is-invalid @enderror" name="type_name" value="{{ old('type_name') }}" autocomplete="none" autofocus>
+                    <!-- error message if flower type name validation fails -->
                     @error('type_name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -19,6 +22,7 @@
                 </div>
             </div>
             
+            <!-- insert button to attempt insert -->
             <div class="form-group row mb-3">
                 <div class="col-md-8 offset-md-2">
                     <button type="submit" class="btn btn-primary">Insert</button>
